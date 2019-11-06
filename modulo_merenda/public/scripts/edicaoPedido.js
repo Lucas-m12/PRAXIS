@@ -1,0 +1,1 @@
+window.app = new ItensPedido("form-pedidos-edicao");

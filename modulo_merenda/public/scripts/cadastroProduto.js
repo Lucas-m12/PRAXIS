@@ -1,0 +1,1 @@
+window.app = new Produto("form-produto", ['categoriaProduto', 'tipoProduto', 'unidadeMedida', 'produto']);

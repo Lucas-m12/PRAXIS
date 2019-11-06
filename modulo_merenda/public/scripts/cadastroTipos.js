@@ -1,0 +1,1 @@
+window.app = new Cadastro("form-tipos", ['tipoProduto'], "/praxis/modulo_merenda/cadastrar/tipos", "Tipo de produto");

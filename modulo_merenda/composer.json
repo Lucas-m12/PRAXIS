@@ -1,0 +1,22 @@
+{
+    "name": "praxis/modulo_merenda",
+    "description": "software para gerenciamento de merendas escolares",
+    "type": "project",
+    "license": "dev",
+    "authors": [
+        {
+            "name": "lucas",
+            "email": "lucasmarinhodasilva2@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim":"2.0",
+        "rain/raintpl": ">=3.0.0",
+        "harvesthq/chosen": "^1.8"
+    },
+    "autoload": {
+        "psr-4":{
+            "Praxis\\": "vendor\\praxis\\class"
+        }
+    }
+}
