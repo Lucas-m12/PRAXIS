@@ -28,7 +28,7 @@ $app->post("/editar/categoria/:id", function($id){
 
 $app->get("/edicao/categoria/:idCategoria", function($idCategoria){
 	
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -44,7 +44,7 @@ $app->get("/edicao/categoria/:idCategoria", function($idCategoria){
 
 $app->get("/edicao/programa/:idPrograma", function($idPrograma){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -74,7 +74,7 @@ $app->post("/editar/programa/:id", function($id){
 
 $app->get("/edicao/tipos/:idTipo", function($idTipo){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -105,7 +105,7 @@ $app->post("/editar/tipo/:id", function($id){
 
 $app->get("/edicao/fornecedor/:codFornecedor", function($codFornecedor){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -160,7 +160,7 @@ $app->post("/editar/fornecedor/:codFornecedor", function($codFornecedor){
 
 $app->get("/edicao/produto/:idProduto", function($idProduto){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -204,7 +204,7 @@ $app->post("/cadastrar/produto/:idProduto", function($idProduto){
 
 $app->get("/edicao/pedido/:codPedido", function($codPedido){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 

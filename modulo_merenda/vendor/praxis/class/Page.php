@@ -34,13 +34,13 @@ class Page {
 
 		$this->usuario = new Usuario();
 
-		$this->tpl->assign("dados", $this->usuario->consultarUsuario($dadosUsuario));
-
-		$this->tpl->assign("unidade", $nomeUnidade);
-
-		$this->tpl->assign("nivelAcesso", $nivelAcesso);
-
-		$this->tpl->assign("inepUnidade", $inepUnidade);
+		$this->setData([
+			"dados"			=>$this->usuario->consultarUsuario($dadosUsuario),
+			"cidade"		=>"praxis",//$_SERVER['DOCUMENT_ROOT'],
+			"inepUnidade"	=>$inepUnidade,
+			"nivelAcesso"	=>$nivelAcesso,
+			"unidade"		=>$nomeUnidade
+		]);
 
 		$this->setData($this->options["data"]);
 
@@ -48,9 +48,7 @@ class Page {
 
 	}
 
-	private function setData($data = array())
-	{
-		$p = [];
+	private function setData($data = array()){
 
 		foreach ($data as $key => $value) {
 			$this->tpl->assign($key, $value);
@@ -58,18 +56,19 @@ class Page {
 
 	}
 
-	public function setTpl($name, $data = array(), $returnHTML = false)
-	{
+	public function setTpl($name, $data = array(), $returnHTML = false){
 
 		$this->setData($data);
-		// $this->tpl->assign($data);
-
 
 		return $this->tpl->draw($name, $returnHTML);
 
 	}
 
 	public function __destruct(){
+
+		$this->setData([
+			"cidade"=>"praxis"
+		]);
 
 		if ($this->options["footer"] === true) $this->tpl->draw("footer");
 

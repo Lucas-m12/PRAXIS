@@ -3,7 +3,10 @@ require_once("vendor/autoload.php");
 
 use Slim\Slim;
 
+session_start();
+
 $app = new Slim();
+
 
 require_once('routes/web.php');
 require_once('routes/cadastro.php');

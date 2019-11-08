@@ -67,10 +67,10 @@
         	</div>
         </div>
 
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Cadastro.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/cadastroPrograma.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Status.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/statusProgramas.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Cadastro.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/cadastroPrograma.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Status.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/statusProgramas.js"></script>
     <script>
         $(document).ready(function(){
             $("#novoPrograma").click(function(){

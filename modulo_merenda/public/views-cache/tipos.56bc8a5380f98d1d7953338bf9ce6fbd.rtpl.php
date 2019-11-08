@@ -67,11 +67,10 @@
                 </div>
         	</div>
         </div>
-
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Cadastro.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/cadastroTipos.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Status.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/statusTipos.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Cadastro.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/cadastroTipos.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Status.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/statusTipos.js"></script>
     <script>
         $(document).ready(function(){
             $("#novoTipo").click(function(){

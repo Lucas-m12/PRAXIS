@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <script src="\modulo_merenda/public/plugins/jquery-1.10.2.js"></script>
-    <!-- <script src="\modulo_merenda/public/plugins/jquery-1.2.6.pack.js"></script> -->
-    <script src="\modulo_merenda/public/plugins/jquery.maskedinput-1.1.4.pack.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/plugins/jquery-1.10.2.js"></script>
+    <!-- <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/plugins/jquery-1.2.6.pack.js"></script> -->
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/plugins/jquery.maskedinput-1.1.4.pack.js"></script>
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Core CSS - Include with every page -->
-    <link href="\modulo_merenda/public/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="\modulo_merenda/public/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link href="\modulo_merenda/public/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-    <link href="\modulo_merenda/public/css/style.css" rel="stylesheet" />
-    <link href="\modulo_merenda/public/css/main-style.css" rel="stylesheet" />
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/css/style.css" rel="stylesheet" />
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/css/main-style.css" rel="stylesheet" />
     <!-- Page-Level CSS -->
-    <link href="\modulo_merenda/public/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
-    <link href="\modulo_merenda/vendor/harvesthq/chosen/chosen.css" rel="stylesheet" >
-    <link href="\modulo_merenda/vendor/harvesthq/chosen/chosen.min.css" rel="stylesheet" >
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/vendor/harvesthq/chosen/chosen.css" rel="stylesheet" >
+    <link href="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/vendor/harvesthq/chosen/chosen.min.css" rel="stylesheet" >
 
    </head>
 <body>
@@ -35,7 +35,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.html">
-                    <img src="\imagens/praxis.png" alt="" />
+                    <img src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/imagens/praxis.png" alt="" />
                 </a>
             </div>
             <!-- end navbar-header -->
@@ -87,34 +87,34 @@
                     </li>
                     
                     <li class="">
-                        <a href="/modulo_merenda/">Ínicio</a>
+                        <a href="/praxis/modulo_merenda/">Ínicio</a>
                     </li>
                     
                     <li class="">
-                        <a href="/modulo_merenda/estoque">Estoque</a>
+                        <a href="/praxis/modulo_merenda/estoque">Estoque</a>
                     </li>
 
                     <li>
-                        <a href="/modulo_merenda/pedidos">Pedidos</a>
+                        <a href="/praxis/modulo_merenda/pedidos">Pedidos</a>
                     </li>
 
                     <li>
                         <a href="#">Cadastros<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/modulo_merenda/cadastro/fornecedores">Fornecedores</a>
+                                <a href="/praxis/modulo_merenda/cadastro/fornecedores">Fornecedores</a>
                             </li>
                             <li>
-                                <a href="/modulo_merenda/cadastro/produtos">Produtos</a>
+                                <a href="/praxis/modulo_merenda/cadastro/produtos">Produtos</a>
                             </li>
                             <li>
-                                <a href="/modulo_merenda/cadastro/tipos">Tipos de Produtos</a>
+                                <a href="/praxis/modulo_merenda/cadastro/tipos">Tipos de Produtos</a>
                             </li>
                             <li>
-                                <a href="/modulo_merenda/cadastro/categorias">Categorias de Produtos</a>
+                                <a href="/praxis/modulo_merenda/cadastro/categorias">Categorias de Produtos</a>
                             </li>
                             <li>
-                                <a href="/modulo_merenda/cadastro/programas">Programas</a>
+                                <a href="/praxis/modulo_merenda/cadastro/programas">Programas</a>
                             </li>
                         </ul>
                         <!-- second-level-items -->

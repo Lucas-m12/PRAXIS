@@ -144,11 +144,11 @@
 
 
 
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Produto.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/cadastroProduto.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Produto.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/cadastroProduto.js"></script>
 
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Pesquisa.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/pesquisaProduto.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Pesquisa.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/pesquisaProduto.js"></script>
 
     <script type="text/javascript">
         function cadastrar(){

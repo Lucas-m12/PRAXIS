@@ -77,5 +77,5 @@
             </div>
         </div>
 
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Estoque.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/estoque.js"></script>
+    <script src="\modulo_merenda/public/scripts/controllers/Estoque.js"></script>
+    <script src="\modulo_merenda/public/scripts/estoque.js"></script>

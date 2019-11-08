@@ -76,8 +76,8 @@
         <!-- </form> -->
         </div>
 
-    <script src="\praxis/modulo_merenda/public/scripts/controllers/Pesquisa.js"></script>
-    <script src="\praxis/modulo_merenda/public/scripts/pesquisaFornecedor.js"></script>
-    <!-- <script src="\praxis/modulo_merenda/public/scripts/funcoes.js"></script> -->
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Pesquisa.js"></script>
+    <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/pesquisaFornecedor.js"></script>
+    <!-- <script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/funcoes.js"></script> -->
 
     

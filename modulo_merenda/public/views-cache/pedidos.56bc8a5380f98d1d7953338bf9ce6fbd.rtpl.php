@@ -90,15 +90,10 @@
                     <a href="/praxis/modulo_merenda/" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="button" class="btn btn-success" id="btn-cadastrar" name="btn-cadastrar" onclick="">Novo</button>
+                    
                 </div>
             </div>
         </div>
 
-	<script src="\praxis/modulo_merenda/public/scripts/controllers/Pesquisa.js"></script>
-	<script src="\praxis/modulo_merenda/public/scripts/pesquisaPedido.js"></script>
-
-	<script type="text/javascript">
-		
-		
-
-	</script>
+	<script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/controllers/Pesquisa.js"></script>
+	<script src="\<?php echo htmlspecialchars( $cidade, ENT_COMPAT, 'UTF-8', FALSE ); ?>/modulo_merenda/public/scripts/pesquisaPedido.js"></script>

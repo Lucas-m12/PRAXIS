@@ -14,7 +14,7 @@ use Praxis\Programa;
 
 $app->get("/cadastro/fornecedores", function(){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -28,7 +28,7 @@ $app->get("/cadastro/fornecedores", function(){
 
 $app->get("/cadastro/categorias", function(){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -42,7 +42,7 @@ $app->get("/cadastro/categorias", function(){
 
 $app->get("/cadastro/programas", function(){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -56,7 +56,7 @@ $app->get("/cadastro/programas", function(){
 
 $app->get("/cadastro/tipos", function(){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -70,7 +70,7 @@ $app->get("/cadastro/tipos", function(){
 
 $app->get("/cadastro/produtos", function(){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -90,7 +90,7 @@ $app->get("/cadastro/produtos", function(){
 
 $app->get("/cadastro/pedido/:codigo", function($codigo){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -108,7 +108,7 @@ $app->get("/cadastro/pedido/:codigo", function($codigo){
 
 $app->get("/cadastro/pedido/produto/:codigoPedido", function($codigoPedido){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
@@ -125,7 +125,7 @@ $app->get("/cadastro/pedido/produto/:codigoPedido", function($codigoPedido){
 
 $app->get("/fornecedor/:codigoFornecedor/novo", function($codigoFornecedor){
 
-	session_start();
+	
 
 	$page = new Page(array(), array(), $_SESSION['id_usuario'], $_SESSION['id_nivel_acesso'], $_SESSION['nome_unidade'], $_SESSION['inep_unidade']);
 
