@@ -1,0 +1,9 @@
+1 - configurar em helper 'url' no autoload
+
+2 - configurar a 'base url' no arquivo config com a url do sistema. Ex: http://localhost/ci/
+
+3 - configurar o controle principal no arquvivo routes 
+
+4 - configurar em libraries 'database' e 'session' no autoload
+
+5 - configurar database em config (dados de acesso ao banco de dados)

@@ -1,1 +1,0 @@
-window.app = new NovoFornecedor("form-edicao-fornecedores", ['codFornecedor', 'nomeFornecedor', 'cnpjFornecedor', 'razaoSocial', 'cep', 'estadoFornecedor', 'cidadeFornecedor', 'bairroFornecedor', 'logradouroFornecedor', 'categoriasOfertadas[]']);

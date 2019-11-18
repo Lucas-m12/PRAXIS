@@ -1,0 +1,1 @@
+window.app = new Fornecedor("form-fornecedores", ['nomeFornecedor', 'cnpjFornecedor', 'razaoSocial', 'cep', 'estadoFornecedor', 'cidadeFornecedor', 'bairroFornecedor', 'logradouroFornecedor', 'categoriasOfertadas[]']);

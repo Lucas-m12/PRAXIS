@@ -1,1 +1,0 @@
-window.app = new Pesquisa("form-pesquisa-pedidos", "/praxis/modulo_merenda/pesquisa/pedido", 3);

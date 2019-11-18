@@ -1,1 +1,0 @@
-window.app = new Pedidos("form-pedidos", ["codigoPedido", "fornecedor", "programa"]);

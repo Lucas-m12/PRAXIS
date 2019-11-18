@@ -1,0 +1,1 @@
+window.app = new Programa("form-programa", ['programa'], "cadastrar-programa");

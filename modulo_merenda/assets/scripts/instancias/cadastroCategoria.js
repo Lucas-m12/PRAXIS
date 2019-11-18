@@ -1,0 +1,1 @@
+window.app = new Categoria('form-categorias', ['categoriaProduto'], 'cadastrar-categoria');

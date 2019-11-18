@@ -1,0 +1,1 @@
+window.app = new Pesquisa('form-pesquisa-produto', 'pesquisa-produto', 1);

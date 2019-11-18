@@ -1,0 +1,1 @@
+window.app = new TipoProduto('form-tipos', ['tipoProduto'], 'cadastrar-tipo');
