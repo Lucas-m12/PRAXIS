@@ -110,8 +110,8 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
-                    <a href="/{$cidade}/modulo_merenda/" type="button" class="btn btn-danger">Fechar</a>
+                    <a href="<?php echo base_url('pedidos') ?>" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
+                    <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="submit" class="btn btn-success" id="btn-finalizar" name="btn-finalizar">Atualizar</button>
                 </div>
@@ -170,7 +170,7 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                    <a href="<?php echo base_url('pedidos') ?>" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="submit" class="btn btn-success" id="btn-atualizar" name="btn-atualizar">Atualizar Situação</button>

@@ -59,10 +59,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div align="center">
-                            <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                            <a href="<?php echo base_url(); ?>inicio" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
                             <a href="<?php echo base_url(); ?>inicio" type="button" class="btn btn-danger">Fechar</a>
                             <button type="reset" class="btn btn-default">Limpar</button>
-                            <button type="button" class="btn btn-success" name="novoTipo" id="novoTipo">Novo</button>
+                            <button type="button" class="btn btn-success" name="novoTipo" id="novoTipo">Novo Tipo</button>
                             <button type="submit" name="submitCadastrar" id="submitCadastrar" class="btn btn-success" style="display: none;">Cadastrar</button>
                         </div>
                         </form>

@@ -15,6 +15,21 @@
                                             </label>
                                             <input type="text" name="codFornecedor" id="codFornecedor" value="<?php echo $codigo ?>" class="form-control" readonly>
                                         </div>
+
+                                        <div class="form-group col-lg-6">
+                                            <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Botões de opção em linha</font></font></label>
+                                            <div class="form-group">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="cnpj" id="cnpj" value="option1" checked onclick="if (this.checked) {$('#cnpjDiv').show(); $('#cpfDiv').hide(); $('#testeDiv').hide()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CNPJ
+                                                </font></font></label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="cnpj" id="cpf" value="option2" onclick="if (this.checked) {$('#cnpjDiv').hide(); $('#cpfDiv').show(); $('#testeDiv').hide()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CPF
+                                                </font></font></label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="cnpj" id="teste" value="option3" onclick="if (this.checked) {$('#cnpjDiv').hide(); $('#cpfDiv').hide(); $('#testeDiv').show()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TESTE
+                                                </font></font></label>
+                                            </div>
+                                        </div>
             							
             							<div class="form-group col-lg-6">
             								<label class="control-label">Nome Fantasia</label>
@@ -22,8 +37,21 @@
             							</div>
             							
             							<div class="form-group col-lg-6">
-            								<label class="control-label">CNPJ do Fornecedor</label>
-            								<input type="text" name="cnpjFornecedor" id="cnpjFornecedor" class="form-control" placeholder="Digite o CNPJ do fornecedor" maxlength="14" autocomplete="off">
+                                            
+                                            <div style="display: block;" id="cnpjDiv">
+                                                <label class="control-label">CNPJ do Fornecedor</label>
+                                                <input type="text" name="cnpjFornecedor" id="cnpjFornecedor" class="form-control" placeholder="Digite o CNPJ do fornecedor" maxlength="14" autocomplete="off">
+                                            </div>
+
+                                            <div style="display: none;" id="cpfDiv">
+                                                <label class="control-label">CPF do Fornecedor</label>
+                                                <input type="text" name="cpfFornecedor" id="cpfFornecedor" class="form-control" placeholder="Digite o CPF do fornecedor" value="">
+                                            </div>
+
+                                            <div style="display: none;" id="testeDiv">
+                                                <label class="control-label">TESTE do Fornecedor</label>
+                                                <input type="text" name="testeFornecedor" id="testeFornecedor" class="form-control" placeholder="Digite o teste do fornecedor" value="">
+                                            </div>
             							</div>
 
                                         <div class="form-group col-lg-6">
@@ -106,7 +134,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                    <a href="<?php echo base_url('fornecedores'); ?>" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="submit" class="btn btn-success" name="btn-finalizar" id="btn-finalizar">Finalizar Cadastro</button>
@@ -131,6 +159,7 @@
         $(".chosen-select").chosen({
                 placeholder_text_single : 'Selecione as categorias',
                 width: "95%",
-                no_results_text: "Nenhuma categoria encontrada"
+                no_results_text: "Nada Encontrado"
             }); 
     </script>
+    

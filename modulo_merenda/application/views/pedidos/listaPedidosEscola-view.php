@@ -9,35 +9,18 @@
 								<form id="form-pesquisa-pedidos" method="post" action="" role="form">
 									
 									<div class="form-group col-lg-6">
-										<label class="control-label">Fornecedor</label>
-										<select name="fornecedorPesquisa" id="fornecedorPesquisa" class="form-control">
-											<option disabled selected value="">SELECIONE O FORNECEDOR</option>
-
-											<?php foreach ($fornecedores as $value): ?>
-												<option value="<?php echo $value['CODIGO_FORNECEDOR'] ?>"><?php echo $value['NOME_FORNECEDOR'] . ' / ' . $value['CNPJ_FORNECEDOR'] ?></option>
-											<?php endforeach ?>
-
-										</select>
-									</div>
-
-									<div class="form-group col-lg-6">
-										<label class="control-label">Data do Pedido</label>
-										<input type="date" name="dataPesquisa" id="dataPesquisa" class="form-control">
-									</div>
-
-									<div class="form-group col-lg-6">
-										<label class="control-label">Programa</label>
-										<select name="programaPesquisa" id="programaPesquisa" class="form-control">
-											<option disabled selected value="">SELECIONE O PROGRAMA</option>
-											<?php foreach ($programas as $value): ?>
-												<option value="<?php echo $value['ID_PROGRAMA'] ?>"><?php echo $value['DESC_PROGRAMA'] ?></option>
+										<label class="control-label">Escola</label>
+										<select name="escolaPesquisa" id="escolaPesquisa" class="chosen-select">
+											<option selected value="">SELECIONE A ESCOLA</option>
+											<?php foreach ($escolas as $value): ?>
+												<option value="<?php echo $value['ID_ESCOLA'] ?>"><?php echo $value['NOME_ESCOLA'] ?> / <?php echo $value['INEP_ESCOLA'] ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
 
 									<div class="form-group col-lg-6">
 										<label class="control-label">Situação</label>
-										<select name="statusPedidoPesquisa" id="statusPedidoPesquisa" class="form-control">
+										<select name="statusPedidoPesquisa" id="statusPedidoPesquisa" class="chosen-select">
 											<option disabled selected value="">SELECIONE A SITUAÇÃO</option>
 
 											<?php foreach ($status as $situacao): ?>
@@ -68,8 +51,8 @@
                                 <thead>
                                     <tr>                    
                                         <th>NÚMERO DO PEDIDO</th>            
+                                        <th>ESCOLA</th>
                                         <th>DATA</th>
-                                        <th>FORNECEDOR</th>
                                         <th>SITUAÇÃO</th>
                                         <th>AÇÃO</th>
                                     </tr>
@@ -90,10 +73,10 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <a href="<?php echo base_url('pedidos') ?>" type="button" class="btn btn-info">Voltar</a>
-                    <a href="<?php echo base_url('inicio')?>" type="button" class="btn btn-danger">Fechar</a>
+                    <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-info">Voltar</a>
+                    <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="button" class="btn btn-success" id="btn-cadastrar" name="btn-cadastrar" onclick="">Novo Pedido</button>
+                    <button type="button" class="btn btn-success" id="btn-cadastrar" name="btn-cadastrar" onclick="" disabled="">Novo</button>
                     
                 </div>
             </div>
@@ -101,5 +84,18 @@
 
 	<script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
 	<script>
-		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedido') ?>", 3, "<?php echo base_url('editar-pedido') ?>");
+		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('lista-pedidoEscola') ?>", 4);
 	</script>
+	<link href="<?php echo base_url('vendor/harvesthq/chosen/chosen.css') ?>" rel="stylesheet" >
+    <link href="<?php echo base_url('vendor/harvesthq/chosen/chosen.min.css') ?>" rel="stylesheet" >   
+    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.jquery.js'); ?>"></script>
+    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.jquery.min.js'); ?>"></script>
+    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.proto.js'); ?>"></script>
+    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.proto.min.js'); ?>"></script>
+    <script>
+        $(".chosen-select").chosen({
+                placeholder_text_single : 'Selecione as categorias',
+                width: "95%",
+                no_results_text: "Nenhuma categoria encontrada"
+            }); 
+    </script>

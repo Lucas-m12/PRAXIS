@@ -224,6 +224,14 @@ class FornecedorModel extends CI_Model{
 
     }
 
+    public function listarFornecedorEscola(){
+
+        return $this->db->query("SELECT ID_ESCOLA, NOME_ESCOLA, INEP_ESCOLA FROM UNIDADE_ENSINO_00 WHERE ID_ESCOLA = ?", array(
+            1
+        ))->result_array();
+
+    }
+
 }
 
 

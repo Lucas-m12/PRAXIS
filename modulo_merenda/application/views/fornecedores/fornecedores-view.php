@@ -15,6 +15,8 @@
                                         <input type="text" name="nomeFornecedorPesquisa" id="nomeFornecedorPesquisa" class="form-control" placeholder="Digite o Nome do Fornecedor">
                                     </div>
 
+                                    
+
                                     <div class="form-group col-lg-6">
                                         <label class="control-label">
                                             CNPJ do Fornecedor
@@ -67,10 +69,10 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                    <a href="<?php echo base_url(); ?>inicio" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
                     <a href="<?php echo base_url(); ?>inicio" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="button" class="btn btn-success" disabled name="btn-novo" id="btn-novo">Novo Fornecedor</button>
+                    <button type="button" class="btn btn-success" name="btn-novo" id="btn-novo">Novo Fornecedor</button>
                 </div>
             </div>
         <!-- </form> -->

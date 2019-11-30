@@ -14,7 +14,7 @@
 											<option disabled selected value="">SELECIONE O FORNECEDOR</option>
 
 											<?php foreach ($fornecedores as $value): ?>
-												<option value="<?php echo $value['CODIGO_FORNECEDOR'] ?>"><?php echo $value['NOME_FORNECEDOR'] . ' / ' . $value['CNPJ_FORNECEDOR'] ?></option>
+												<option value="<?php echo $value['ID_ESCOLA'] ?>"><?php echo $value['NOME_ESCOLA'] . ' / ' . $value['INEP_ESCOLA'] ?></option>
 											<?php endforeach ?>
 
 										</select>
@@ -90,16 +90,16 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <a href="<?php echo base_url('pedidos') ?>" type="button" class="btn btn-info">Voltar</a>
+                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
                     <a href="<?php echo base_url('inicio')?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="button" class="btn btn-success" id="btn-cadastrar" name="btn-cadastrar" onclick="">Novo Pedido</button>
+                    <button type="button" class="btn btn-success" id="btn-cadastrar" name="btn-cadastrar" onclick="">Novo</button>
                     
                 </div>
             </div>
         </div>
 
-	<script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
+	<script src="<?php echo base_url('assets/scripts/class/PesquisaEscola.js') ?>"></script>
 	<script>
-		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedido') ?>", 3, "<?php echo base_url('editar-pedido') ?>");
+		window.app = new PesquisaEscola("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedidoEscola') ?>", 2, "<?php echo base_url('editar-pedido') ?>");
 	</script>

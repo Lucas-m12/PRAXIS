@@ -32,14 +32,14 @@ class Home extends CI_Controller {
 
 
 	public function inicio(){
-    if($this->session->userdata('logado')){}else {redirect('login');}
+    if($this->session->userdata('logado')){}else {redirect(base_url('inicio'));}
 		$data['page']  = 'inicio-view';
 		$this->load->view('template/main-view', $data);
 	}
 
   public function logoff(){
     $this->session->sess_destroy();
-    redirect('login');
+    redirect(base_url('login'));
   }
 	
 

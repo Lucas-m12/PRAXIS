@@ -77,6 +77,8 @@ $route['pesquisa-pedido']			= 'pedido/pesquisarPedido';
 $route['editar-pedido/(:num)']		= 'pedido/editarPedidoView/$1';
 $route['editar-statusPedido']		= 'pedido/editarStatusPedido';
 $route['excluir-itemPedido']		= 'pedido/excluirItemPedido';
+$route['pedidos-pendentesEscola']	= 'pedido/listaPedidosEscolaView';
+$route['lista-pedidoEscola']		= 'pedido/listarPedidosEscola';
 // Rotas Programas
 $route['programas'] 				= 'programa/listarProgramas';
 $route['cadastrar-programa'] 		= 'programa/cadastrarPrograma';
@@ -105,8 +107,26 @@ $route['categorias'] 				= 'categoria/listarCategorias';
 $route['cadastrar-categoria'] 		= 'categoria/cadastrarCategoria';
 $route['editar-categoria/(:num)']	= 'categoria/editarCategoriaView/$1';
 $route['atualizar-categoria']		= 'categoria/atualizarCategoria';
+// licitacoes
+$route['licitacoes']				= 'licitacao/licitacoesView';
+$route['pesquisa-licitacao']		= 'licitacao/pesquisarLicitacoes';
+$route['cadastrar-licitacao']		= 'licitacao/cadastrarLicitacao';
+$route['itens-licitacao/(:num)']	= 'licitacao/itensLicitacaoView/$1';
+$route['cadastrar-itenLicitacao']	= 'licitacao/cadastrarItensLicitacao';
 
 
 
 
+/////////////////////////////////////ROTAS PARA UNIDADE DE ENSINO////////////////////////////////////////////////
 
+//ROTAS PEDIDOS
+
+$route['pedidos-escola'] 				= 'pedido/viewPedidoEscola';
+$route['pesquisa-pedidoEscola']			= 'pedido/pesquisarPedidoEscola';
+$route['codigo-pedidoEscola']			= 'pedido/codigoPedidoEscola';
+$route['novoPedidoEscola/(:num)']		= 'pedido/novoPedidoEscolaView/$1';
+$route['cadastrar-pedido-escola']		= 'pedido/cadastrarInfoPedidoEscola';
+$route['produtosPedidoEscola/(:num)'] 	= 'pedido/ItensPedidoEscolaView/$1';
+$route['cadastrar-itensPedidoEscola']	= 'pedido/cadastrarItensPedidoEscola';
+$route['excluir-itemPedidoEscola']		= 'pedido/excluirItemPedidoEscola';
+$route['editar-statusPedidoEscola']		= 'pedido/editarStatusPedidoEscola';

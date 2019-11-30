@@ -16,7 +16,7 @@
 
 									<div class="form-group col-lg-6">
 										<label class="control-label">Fornecedor</label>
-										<input type="text" name="fornecedor" id="fornecedor" class="form-control" disabled value="<?php echo $pedido['NOME_FORNECEDOR'] ?>">
+										<input type="text" name="fornecedor" id="fornecedor" class="form-control" disabled value="<?php echo $pedido['NOME_ESCOLA'] ?>">
 									</div>
 
 									<div class="form-group col-lg-6">
@@ -94,17 +94,16 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <a href="<?php echo base_url('pedidos') ?>" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
-                    <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
+                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                    <a href="/{$cidade}/modulo_merenda/" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="button" class="btn btn-success" id="btn-finalizar" name="btn-finalizar" onclick="window.location.href='<?php echo base_url(); ?>pedidos'">Finalizar Cadastro</button>
+                    <button type="button" class="btn btn-success" id="btn-finalizar" name="btn-finalizar" onclick="window.location.href='<?php echo base_url(); ?>pedidos-escola'">Finalizar Cadastro</button>
                 </div>
             </div>
         </div>
 
 
-
-	<script src="<?php echo base_url('assets/scripts/class/ItensPedido.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/scripts/class/ItensPedidoEscola.js'); ?>"></script>
 	<script>
-		window.app = new ItensPedido("form-pedidos", "<?php echo base_url('pesquisa-produtoForn') ?>", "<?php echo base_url('pesquisa-unidadeMedida') ?>", "<?php echo base_url('cadastrar-itensPedido') ?>", "<?php echo base_url('excluir-itemPedido') ?>", "<?php echo base_url('editar-statusPedido') ?>", "<?php echo base_url('inicio') ?>");
+		window.app = new ItensPedidoEscola("form-pedidos", "<?php echo base_url('pesquisa-produtoForn') ?>", "<?php echo base_url('pesquisa-unidadeMedida') ?>", "<?php echo base_url('cadastrar-itensPedidoEscola') ?>", "<?php echo base_url('excluir-itemPedidoEscola') ?>", "<?php echo base_url('editar-statusPedidoEscola') ?>", "<?php echo base_url('pedidos-escola') ?>");
 	</script>	

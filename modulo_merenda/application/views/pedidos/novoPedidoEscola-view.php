@@ -18,7 +18,7 @@
 										<select class="form-control" name="fornecedor" id="fornecedor">
 											<option disabled selected></option>
 											<?php foreach ($fornecedores as $value): ?>
-												<option value="<?php echo $value['CODIGO_FORNECEDOR'] ?>"><?php echo $value['NOME_FORNECEDOR'] . " / " . $value['CNPJ_FORNECEDOR']; ?></option>
+												<option value="<?php echo $value['ID_ESCOLA'] ?>"><?php echo $value['NOME_ESCOLA'] . " / " . $value['INEP_ESCOLA']; ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
@@ -51,7 +51,7 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <a type="button" class="btn btn-info" href="<?php echo base_url('pedidos') ?>">Voltar</a>
+                    <a type="button" class="btn btn-info" href="<?php echo base_url('pedidos-escola') ?>">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="button" class="btn btn-success" id="btn-avancar" name="btn-avancar">Avançar</button>
@@ -62,8 +62,7 @@
 
 
 	<script src="<?php echo base_url('assets/scripts/class/Pedido.js') ?>"></script>
-	<!-- <script src="<?php echo base_url('assets/scripts/instancias/novoPedido.php') ?>"></script> -->
 	<script>
-		window.app = new Pedido("form-pedidos", ["codigoPedido", "fornecedor", "programa"], "<?php echo base_url("cadastrar-pedido") ?>", "<?php echo base_url("produtosPedido") ?>");
+		window.app = new Pedido("form-pedidos", ["codigoPedido", "fornecedor", "programa"], "<?php echo base_url("cadastrar-pedido-escola") ?>", "<?php echo base_url("produtosPedidoEscola") ?>");
 	</script>
 	

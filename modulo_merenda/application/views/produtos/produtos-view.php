@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="row" id="oculta" style="display: none;">
+        <div class="row" id="oculta" style="display: block;">
         	<div class="col-lg-12">
         		<div class="panel panel-default">
         			<div class="panel-heading">Cadastro de Produto</div>
@@ -96,21 +96,21 @@
                                     </div>
 
                                     <div class="form-group col-lg-6">
-                                        <label>Tipo de Produto</label>
-                                        <select name="tipoProduto" id="tipoProduto" class="form-control" >
-                                            <option disabled selected>Selecione o tipo de produto</option>
-                                            <?php foreach ($tipos as $value): ?>
-                                                <option value="<?php echo $value['ID_TIPO'] ?>"><?php echo $value['TIPO_PRODUTO'] ?></option>
-                                            <?php endforeach ?>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group col-lg-6">
                                         <label>Unidade de Medida</label>
                                         <select name="unidadeMedida" id="unidadeMedida" class="form-control" >
                                             <option disabled selected>Selecione a unidade de medida</option>
                                             <?php foreach ($unidadesMedida as $value): ?>
                                                 <option value="<?php echo $value['ID_UNIDADE_MEDIDA'] ?>"><?php echo $value['DESC_UNIDADE_MEDIDA'] ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-lg-6">
+                                        <label>Tipo de Produto</label>
+                                        <select name="tipoProduto" id="tipoProduto" class="form-control" >
+                                            <option disabled selected>Selecione o tipo de produto</option>
+                                            <?php foreach ($tipos as $value): ?>
+                                                <option value="<?php echo $value['ID_TIPO'] ?>"><?php echo $value['TIPO_PRODUTO'] ?></option>
                                             <?php endforeach ?>
                                         </select>
                                     </div>
@@ -131,10 +131,10 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                    <a href="<?php echo base_url(); ?>inicio" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="button" class="btn btn-success" onclick="cadastrar()" id="novoProduto">Novo</button>
+                    <button type="button" class="btn btn-success" onclick="cadastrar()" id="novoProduto">Novo Produto</button>
                     <button type="submit" class="btn btn-success" id="cadastrarProduto" name="cadastrarProduto" style="display: none;">Cadastrar</button>
                 </div>
                 </form>

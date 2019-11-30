@@ -38,6 +38,14 @@ class Pesquisa{
 					this.codPedido();
 				break;
 
+				case 4:
+					this.searchDataPedidosEscola(values);
+				break;
+
+				case 5:
+					this.searchDataLicitacoes(values);
+				break;
+
 			}
 
 		});
@@ -190,12 +198,47 @@ class Pesquisa{
 						 		<td>${field.DATA_PEDIDO}</td>
 						 		<td>${field.NOME_FORNECEDOR}</td>
 						 		<td><button class="btn btn-xs btn-outline" type="button" name="btn-status" style="color: ${field.COR};">${field.TIPO_STATUS}</button></td>
-						 		<td>${editar}</td>
+						 		<td><a href="${this.rotaImpressao}/${field.CODIGO_PEDIDO}" type="button" class="btn btn-success btn-xs">Imprimir</a>         ${editar}</td>
 						 	`
 						 document.getElementById('corpoTabela').appendChild(tr);
 
 					});
 				}
+			}
+
+		});
+
+	}
+
+	searchDataPedidosEscola(values){
+
+		let corpo = $("#corpoTabela");
+
+		$.ajax({
+
+			type: "POST",
+			url: this.rotaBusca,
+			data: values,
+			success: data =>{
+				let dados = JSON.parse(data);
+				corpo.empty();
+
+				dados.forEach((field, index) =>{
+
+					corpo.append(`
+
+						<tr>
+							<td>${field.CODIGO_PEDIDO}</td>
+							<td>${field.NOME_ESCOLA}</td>
+							<td>${field.DATA_PEDIDO}</td>
+							<td>${field.TIPO_STATUS}</td>
+							<td><button class="btn btn-default btn-xs">Editar</button></td>
+						</tr>
+
+					`);
+
+				});
+
 			}
 
 		});
@@ -236,6 +279,53 @@ class Pesquisa{
             });
 
 		});
+	}
+
+	searchDataLicitacoes(values){
+
+		let corpo = $("#corpoTabela");
+
+		$.ajax({
+
+			type: "POST",
+			url: this.rotaBusca,
+			data: values,
+			success: data =>{
+				let dados = JSON.parse(data);
+
+				if (dados == "" || dados == undefined || dados.length < 1) {
+					swal.fire({
+						title: "Falha!",
+						text: "Nenhuma licitação encontrada",
+						icon: "warning"
+					});
+				}else{
+
+					dados.forEach(field =>{
+
+						corpo.append(
+							`
+							<tr>
+
+								<td>${field.NUMERO_LICITACAO}</td>
+								<td>${field.NOME_FORNECEDOR}</td>
+								<td>${field.DATA_INICIO}</td>
+								<td>${field.DATA_FIM}</td>
+								<td><a href="#" class="btn btn-default btn-xs">Editar</a></td>
+
+							</tr>
+
+							`
+						);
+
+					});
+
+				}
+
+			}
+
+		});
+
 	}
 
 

@@ -55,13 +55,28 @@
                     <!-- side-menu -->
                     <ul class="nav" id="side-menu">
                         <!-- menu -->
-                        <?php
-                        if($this->session->userdata('ID_NIVEL_ACESSO')==1){
+                        <?php 
+                            switch ($this->session->userdata('ID_NIVEL_ACESSO')) {
+                                case 1:
+                                    $this->load->view('template/menu1-view');
+                                    break;
+
+                                case 2:
+                                    $this->load->view('template/menu2-view');
+                                    break;
+                                
+                                default:
+                                    # code...
+                                    break;
+                            }
+                        ?>
+                        <!-- <?php
+                        /*if($this->session->userdata('ID_NIVEL_ACESSO')==1){
                         $this->load->view('template/menu1-view');
                         }elseif ($this->session->userdata('ID_NIVEL_ACESSO')==2) {
                         $this->load->view('template/menu2-view');
-                        }
-                        ?>
+                        }*/
+                        ?> -->
                         <!-- end side-menu -->
                     </div>
                     <!-- end sidebar-collapse -->

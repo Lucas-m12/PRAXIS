@@ -115,44 +115,11 @@
         <a href="<?php echo base_url('estoque') ?>">Estoque</a>
     </li>
 
-    <li class="">
-        <a href="<?php echo base_url('licitacoes') ?>">Licitações</a>
+    <li>
+        <a href="<?php echo base_url('pedidos-escola') ?>">Pedidos</a>
     </li>
 
-    <li>
-        <a href="#">Cadastros<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-            <li>
-                <a href="<?php echo base_url('programas') ?>">Programas</a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('tipos') ?>">Tipos de Produtos</a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('categorias') ?>">Categorias de Produtos</a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('view-produtos') ?>">Produtos</a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('fornecedores') ?>">Fornecedores</a>
-            </li>
-            
-        </ul>
-    </li>
-
-    <li>
-        <a href="#">Pedidos<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-            <li>
-                <a href="<?php echo base_url('pedidos') ?>">Fornecedor</a>
-            </li>
-            <li>
-                <a href="<?php echo base_url('pedidos-pendentesEscola') ?>">Escola</a>
-            </li>
-        </ul>
-        
-    </li>
+    
 
 
 </ul>

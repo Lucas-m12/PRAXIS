@@ -66,16 +66,16 @@ class Login extends CI_Controller {
                 //cria sessão
                 $this->session->set_userdata($dataProf);
 
-                redirect('inicio');
+                redirect(base_url('inicio'));
           
               }else{
                   $this->session->set_flashdata('error','Senha inválida!');
-                  redirect('login');
+                  redirect(base_url('login'));
               }
              
            }else{
               $this->session->set_flashdata('error','Login inválido!');
-              redirect('login');
+              redirect(base_url('login'));
            }
            
 
