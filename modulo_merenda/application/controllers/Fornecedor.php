@@ -72,7 +72,6 @@ class Fornecedor extends CI_Controller{
 		
 	    $this->form_validation->set_rules('codFornecedor', 'Codigo do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('nomeFornecedor', 'Nome do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
-	    $this->form_validation->set_rules('cnpjFornecedor', 'CNPJ do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('razaoSocial', 'Razão Social', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('cep', 'CEP', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('estadoFornecedor', 'Estado do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
@@ -92,6 +91,9 @@ class Fornecedor extends CI_Controller{
            	$codigoFornecedor 	= $this->input->post("codFornecedor");
            	$nome 				= $this->input->post("nomeFornecedor");
            	$cnpj 				= $this->input->post("cnpjFornecedor");
+           	$cpf 				= $this->input->post("cpfFornecedor");
+           	$dap				= $this->input->post("dapFornecedor");
+           	$email				= $this->input->post("emailFornecedor");
            	$razaoSocial 		= $this->input->post("razaoSocial");
            	$inscricaoEstadual 	= $this->input->post("inscricaoEstadual");
            	$cep 				= $this->input->post("cep");
@@ -113,6 +115,10 @@ class Fornecedor extends CI_Controller{
 			$this->fornecedor->setBairro($bairro);
 			$this->fornecedor->setLogradouro($logradouro);
 			$this->fornecedor->setComplemento($complemento);
+			$this->fornecedor->setCpf($cpf);
+			$this->fornecedor->setDap($dap);
+			$this->fornecedor->setEmail($email);
+
 
 			$this->fornecedor->cadastrarFornecedor();
 
@@ -160,7 +166,6 @@ class Fornecedor extends CI_Controller{
 		
 	    $this->form_validation->set_rules('codFornecedor', 'Codigo do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('nomeFornecedor', 'Nome do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
-	    $this->form_validation->set_rules('cnpjFornecedor', 'CNPJ do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('razaoSocial', 'Razão Social', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('cep', 'CEP', 'required', array('required' => 'Você deve preencher o %s.'));
 	    $this->form_validation->set_rules('estadoFornecedor', 'Estado do Fornecedor', 'required', array('required' => 'Você deve preencher o %s.'));
@@ -180,6 +185,9 @@ class Fornecedor extends CI_Controller{
            	$codigoFornecedor 	= $this->input->post("codFornecedor");
            	$nome 				= $this->input->post("nomeFornecedor");
            	$cnpj 				= $this->input->post("cnpjFornecedor");
+           	$cpf 				= $this->input->post("cpfFornecedor");
+           	$dap				= $this->input->post("dapFornecedor");
+           	$email				= $this->input->post("emailFornecedor");
            	$razaoSocial 		= $this->input->post("razaoSocial");
            	$inscricaoEstadual 	= $this->input->post("inscricaoEstadual");
            	$cep 				= $this->input->post("cep");
@@ -189,6 +197,7 @@ class Fornecedor extends CI_Controller{
            	$logradouro 		= $this->input->post("logradouroFornecedor");
            	$complemento 		= $this->input->post("complementoFornecedor");
            	$categoriasOfertadas= $this->input->post("categoriasOfertadas");
+
            	$status 			= (isset($_POST['status'])) ? $this->input->post("status") : 1;
 
 			$this->fornecedor->setFornecedor($nome);
@@ -202,9 +211,13 @@ class Fornecedor extends CI_Controller{
 			$this->fornecedor->setLogradouro($logradouro);
 			$this->fornecedor->setComplemento($complemento);
 			$this->fornecedor->setStatus($status);
+			$this->fornecedor->setCpf($cpf);
+			$this->fornecedor->setDap($dap);
+			$this->fornecedor->setEmail($email);
+			$this->fornecedor->setCodigoFornecedor($codigoFornecedor);
 			
-			$this->fornecedor->excluirCategoriasItens($codigoFornecedor);
-			$this->fornecedor->atualizarFornecedor($codigoFornecedor);
+			$this->fornecedor->excluirCategoriasItens();
+			$this->fornecedor->atualizarFornecedor();
 
 
 			foreach ($categoriasOfertadas as $value) {

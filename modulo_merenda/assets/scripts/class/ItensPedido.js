@@ -52,7 +52,6 @@ class ItensPedido{
 		document.querySelector("#addProduto").addEventListener("click", event =>{
 
 			let values = this.getValuesProducts(this.formEl);
-			
 			if (values != false) {
 				this.sendDataProduct(values);
 			}
@@ -71,7 +70,7 @@ class ItensPedido{
 
 		[...formEl.elements].forEach((field, index) =>{
 
-			if (["quantidade", "produtos", "idUnidadeMedida", "categoria"].indexOf(field.name) > -1 && !field.value) {
+			if (["quantidade", "produtos"].indexOf(field.name) > -1 && !field.value) {
 
 				field.parentElement.classList.add('has-error');
 
@@ -83,9 +82,10 @@ class ItensPedido{
 
 				if(field.name == 'produtos'){
 
-					let divisao = field.value.split('/');
-					data[field.name] = divisao[0];
-					data['nomeProduto'] = divisao[1];
+					let divisao 			= field.value.split('/');
+					data[field.name] 		= divisao[0];
+					data['nomeProduto'] 	= divisao[1];
+					data['unidadeMedida']	= divisao[2];
 
 				}else{
 					data[field.name] = field.value;
@@ -94,8 +94,6 @@ class ItensPedido{
 			}
 
 		});
-
-		data["unidadeMedida"] = this.formEl.querySelector("#unidadeMedida").innerHTML;
 
 		[...produtoTabela].filter(elem=>{
 
@@ -116,37 +114,60 @@ class ItensPedido{
 
 	}
 
-
 	onChange(){
 
-		let categoria 	= this.formEl.querySelector("#categoria");
-		let fornecedor 	= this.formEl.querySelector("#fornecedor");
-		let produto 	= this.formEl.querySelector("#produtos");
-		let programa 	= this.formEl.querySelector("#programa");
-		let avancar 	= document.querySelector("#btn-avancar");
+		let produto 	= document.querySelector("#produtos");
+		let quantidade	= document.querySelector("#quantidade");
+		let saldoEl		= document.querySelector("#saldo");
+		let btn 		= document.querySelector("#addProduto");
 
-		categoria.addEventListener("change", event => {
-			$("#produtos").empty();
-			this.searchProdutosFornecedor(categoria.value);
+		produto.addEventListener("change", event =>{
+
+			let dados		 	= produto.value.split('/');
+			let saldo 			= dados[3];
+			let unidadeMedida 	= dados[2];
+
+			document.querySelector("#unidadeMedida").innerHTML 	= unidadeMedida;
+			saldoEl.value = saldo;
 
 		});
 
-		// fornecedor.addEventListener("change", event => {
+		quantidade.addEventListener("keyup", event =>{
 
-		// 	$("#categoria").empty();
-		// 	this.searchCategoriaProduto(fornecedor.value);
+			if (quantidade.value > saldoEl.value) {
+
+				swal.fire({
+					text: "Quantidade excede o limite licitado",
+					icon: "error"
+				})
+				quantidade.parentElement.classList.remove('has-success');
+				quantidade.parentElement.classList.add('has-error');
+				btn.disabled = true;
+
+			} else if (quantidade.value < saldoEl.value) {
+				quantidade.parentElement.classList.remove('has-error');
+				quantidade.parentElement.classList.add('has-success');
+				btn.disabled = false;
+
+			}
+			
+
+		});
+
+
+
+		// let produto 	= this.formEl.querySelector("#produtos");
+		// let avancar 	= document.querySelector("#btn-avancar");
+
+		// produto.addEventListener("change", event => {
+
+		// 	this.searchUnidadeMedidaProduto(produto.value);
 
 		// });
 
-		produto.addEventListener("change", event => {
-
-			this.searchUnidadeMedidaProduto(produto.value);
-
-		});
-
 	}
 
-	searchUnidadeMedidaProduto(idProduto){
+	/*searchUnidadeMedidaProduto(idProduto){
 
 		$.ajax({
 
@@ -161,7 +182,7 @@ class ItensPedido{
 
 		});
 
-	}
+	}*/
 
 	// searchCategoriaProduto(dado){
 
@@ -190,7 +211,7 @@ class ItensPedido{
 
 	// }
 		
-	searchProdutosFornecedor(idCategoria){
+	/*searchProdutosFornecedor(idCategoria){
 
 		$.ajax({
 
@@ -218,7 +239,7 @@ class ItensPedido{
 
 		});
 
-	}
+	}*/
 
 	sendDataProduct(values){
 
@@ -230,7 +251,7 @@ class ItensPedido{
 			success: data =>{
 
 				let dados = JSON.parse(data);
-				if (dados.id != undefined && dados.id != "") {
+				if (dados.ID_PRODUTO != undefined && dados.ID_PRODUTO != "") {
 					this.addLineTable(values);
 				}
 			}

@@ -20,26 +20,18 @@
 									</div>
 
 									<div class="form-group col-lg-6">
-										<label class="control-label">Programa</label>
-										<input type="text" name="programa" id="programa" class="form-control" value="<?php echo $pedido['DESC_PROGRAMA'] ?>" disabled>
-									</div>
-
-									<div class="form-group col-lg-6">
-										<label class="control-label">Selecione a categoria do produto</label>
-										<select class="form-control" name="categoria" id="categoria">
-											<option disabled selected></option>
-											<?php foreach ($categorias as $value): ?>
-												<option value="<?php echo $value['ID_CATEGORIA'] ?>"><?php echo $value['DESC_CATEGORIA'] ?></option>
+										<label class="control-label">Selecione os produtos do pedido</label>
+										<select class="form-control" name="produtos" id="produtos">
+											<option value="" selected></option>
+											<?php foreach ($produtos as $value): ?>
+												<option value="<?php echo $value['ID_PRODUTO'] ?>/<?php echo $value['DESC_PRODUTO'] ?>/<?php echo $value['SIGLA_UNIDADE_MEDIDA'] ?>/<?php echo $value['SALDO'] ?>"><?php echo $value['DESC_PRODUTO']; ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
 
 									<div class="form-group col-lg-6">
-										<label class="control-label">Selecione os produtos do pedido</label>
-										<select class="form-control" name="produtos" id="produtos">
-											<option disabled selected></option>
-											
-										</select>
+										<label class="control-label">Programa</label>
+										<input type="text" name="programa" id="programa" class="form-control" value="<?php echo $pedido['DESC_PROGRAMA'] ?>" disabled>
 									</div>
 
 									<div class="form-group col-lg-6">
@@ -48,14 +40,14 @@
 											<input type="number" name="quantidade" id="quantidade" class="form-control" placeholder="Digite a quantidade do produto">
 											<span class="input-group-addon" id="unidadeMedida"></span>
 										</div>
-										<input type="hidden" name="idUnidadeMedida" id="idUnidadeMedida">
+										<input type="hidden" name="saldo" id="saldo" value="">
 									</div>
 
-									<div class="form-group col-lg-12">
+									<div class="form-group col-lg-6">
 										<label></label>
-										<button type="button" name="addProduto" id="addProduto" class="btn btn-primary">Adicionar</button>
+										<button type="button" name="addProduto" id="addProduto" class="btn btn-primary btn-block">Adicionar</button>
 									</div>
-									
+
 								</form>
 							</div>
 						</div>

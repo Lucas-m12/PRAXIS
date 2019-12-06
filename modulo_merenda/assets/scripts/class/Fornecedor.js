@@ -1,11 +1,11 @@
 class Fornecedor{
 
-	constructor(formEl, array = array()){
+	constructor(formEl, array){
 
 		this.formEl = document.getElementById(formEl);
 
 		this.array = array;
-
+		
 		this.onSubmit();
 
 	}
@@ -20,10 +20,14 @@ class Fornecedor{
 			let btn = document.querySelector("[type=submit]");
 
 			btn.disabled = true;
-
 			let values = this.getValues(this.formEl, btn);
 
 			if (!values) {
+				swal.fire({
+					text: "Preencha os campos em vermelho!",
+					icon: "error"
+				});
+
 				btn.disabled = false;
 			}else {
 				this.formEl.submit();
@@ -50,12 +54,12 @@ class Fornecedor{
 
 			if (field.name == 'cnpjFornecedor') {
 
-				let cnpj = this.validarCNPJ(field.value);
-
-				if (!cnpj) {
-					swal.fire("CNPJ inválido");
-					isValid = false;
-				}
+				// let cnpj = this.validarCNPJ(field.value);
+				
+				// if (!cnpj) {
+				// 	swal.fire("CNPJ inválido");
+				// 	isValid = false;
+				// }
 
 			}
 
@@ -70,7 +74,7 @@ class Fornecedor{
 	validarCNPJ(cnpj){
 		cnpj = cnpj.replace(/[^\d]+/g,'');
  
-	    if(cnpj == '') return false;
+	    // if(cnpj == '') return false;
 	     
 	    if (cnpj.length != 14)
 	        return false;

@@ -17,6 +17,8 @@ class Pedido extends CI_Controller{
 
 		$this->load->model("categoriaModel", "categoria");
 
+		$this->load->model("licitacaoModel", "licitacao");
+
 
 	}
 
@@ -119,7 +121,7 @@ class Pedido extends CI_Controller{
 
 		if($this->session->userdata('logado')){}else {redirect('login');}
 
-		$fornecedores 			= $this->fornecedor->listarFornecedores();
+		$fornecedores 			= $this->fornecedor->listarFornecedoresLicitados();
 		$programas 				= $this->programa->listarProgramas();
 
 		$data['page'] 			= "pedidos/novoPedido-view";
@@ -206,13 +208,14 @@ class Pedido extends CI_Controller{
 		if($this->session->userdata('logado')){}else {redirect('login');}
 
 		$dadosPedido	 	= $this->pedido->dadosPedido($codigoPedido);
-		$categorias			= $this->fornecedor->categoriasOfertadas($dadosPedido['CODIGO_FORNECEDOR']);
+		$produtos			= $this->fornecedor->produtosLicitados($dadosPedido['CODIGO_FORNECEDOR']);
 
 		$data['page'] 		= "pedidos/novoPedidoProduto-view";
 		$data['codigo'] 	= $codigoPedido;
 		$data['pedido']		= $dadosPedido;
-		$data['categorias']	= $categorias;
+		$data['produtos']	= $produtos;
 
+		// echo json_encode($produtos);
 		$this->load->view('template/main-view', $data);
 
 	}
@@ -273,14 +276,20 @@ class Pedido extends CI_Controller{
         	$this->pedido->setCodigoPedido($codigoPedido);
         	$this->pedido->setProduto($produto);
         	$this->pedido->setQuantidade($quantidade);
+        	
 
-        	$result = $this->pedido->cadastrarItensPedido();
-
+        	$result = $this->pedido->cadastrarItensPedido();      	
+        		
         	echo json_encode($result);
+        	
+        	
+
+        	
 
 	    }
 
 	}
+
 
 	public function cadastrarItensPedidoEscola(){
 

@@ -201,11 +201,28 @@ class PedidoModel extends CI_Model{
 
 	public function cadastrarItensPedido(){
 
-		return $this->db->query("CALL itensPedido(?, ?, ?)", array(
+		$idItem = $this->db->query("CALL itensPedido(?, ?, ?)", array(
 			$this->getCodigoPedido(),
 			$this->getProduto(),
 			$this->getQuantidade()
 		))->result_array()[0];
+
+		// $result = $this->db->query("SELECT MIL.ID_ITEM FROM MM_PEDIDOS_FORNECEDOR MPF INNER JOIN MM_LICITACOES ML USING(CODIGO_FORNECEDOR) INNER JOIN MM_ITENS_LICITACAO MIL USING(ID_LICITACAO) WHERE MPF.CODIGO_PEDIDO = ? AND MIL.ID_PRODUTO = ? AND ML.STATUS = ?", array(
+  //           $this->getCodigoPedido(),
+  //           $this->getProduto(),
+  //           1
+  //       ))->result_array()[0];
+
+  //       if (count($result) > 0) {
+        
+  //           $this->db->query("UPDATE MM_ITENS_LICITACAO SET SALDO = SALDO - ? WHERE ID_ITEM = ?", array(
+  //               $this->getQuantidade(),
+  //               $result['ID_ITEM']
+  //           ));
+
+  //       }
+
+        return $idItem;
 
 	}
 

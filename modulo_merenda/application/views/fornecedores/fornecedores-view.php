@@ -79,7 +79,9 @@
         </div>
 
         <script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
-        <script src="<?php echo base_url('assets/scripts/instancias/pesquisaFornecedor.js') ?>"></script>
+        <script>
+            window.app = new Pesquisa('form-pesquisa-fornecedores', 'pesquisa-fornecedor', 2);
+        </script>
 
 
     

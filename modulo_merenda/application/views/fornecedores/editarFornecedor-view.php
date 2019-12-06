@@ -20,13 +20,13 @@
                                             <label><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Botões de opção em linha</font></font></label>
                                             <div class="form-group">
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="cnpj" id="cnpj" value="option1" checked onclick="if (this.checked) {$('#cnpjDiv').show(); $('#cpfDiv').hide(); $('#testeDiv').hide()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CNPJ
+                                                    <input type="radio" name="cnpj" id="cnpj" value="option1" checked onclick="if (this.checked) {$('#cnpjDiv').show(); $('#cpfDiv').hide(); $('#dapDiv').hide()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CNPJ
                                                 </font></font></label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="cnpj" id="cpf" value="option2" onclick="if (this.checked) {$('#cnpjDiv').hide(); $('#cpfDiv').show(); $('#testeDiv').hide()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CPF
+                                                    <input type="radio" name="cnpj" id="cpf"  value="option2" onclick="if (this.checked) {$('#cnpjDiv').hide(); $('#cpfDiv').show(); $('#dapDiv').hide()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CPF
                                                 </font></font></label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="cnpj" id="teste" value="option3" onclick="if (this.checked) {$('#cnpjDiv').hide(); $('#cpfDiv').hide(); $('#testeDiv').show()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">TESTE
+                                                    <input type="radio" name="cnpj" id="dap" value="option3" onclick="if (this.checked) {$('#cnpjDiv').hide(); $('#cpfDiv').hide(); $('#dapDiv').show()}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DAP
                                                 </font></font></label>
                                             </div>
                                         </div>
@@ -38,20 +38,20 @@
             							
             							<div class="form-group col-lg-6">
                                             <div style="display: block;" id="cnpjDiv">
-                								<label class="control-label">CNPJ do Fornecedor</label>
-                								<input type="text" name="cnpjFornecedor" id="cnpjFornecedor" class="form-control" placeholder="Digite o CNPJ do fornecedor" value="<?php echo $dados['CNPJ_FORNECEDOR'] ?>">
+                                                <label class="control-label">CNPJ do Fornecedor</label>
+                                                <input type="text" name="cnpjFornecedor" id="cnpjFornecedor" class="form-control" placeholder="Digite o CNPJ do fornecedor" maxlength="14" autocomplete="off"  value="<?php echo $dados['CNPJ_FORNECEDOR'] ?>">
                                             </div>
 
                                             <div style="display: none;" id="cpfDiv">
                                                 <label class="control-label">CPF do Fornecedor</label>
-                                                <input type="text" name="cpfFornecedor" id="cpfFornecedor" class="form-control" placeholder="Digite o CPF do fornecedor" value="">
+                                                <input type="text" name="cpfFornecedor" id="cpfFornecedor" class="form-control" placeholder="Digite o CPF do fornecedor" value="<?php echo $dados['CPF_FORNECEDOR'] ?>">
                                             </div>
 
-                                            <div style="display: none;" id="testeDiv">
-                                                <label class="control-label">TESTE do Fornecedor</label>
-                                                <input type="text" name="testeFornecedor" id="testeFornecedor" class="form-control" placeholder="Digite o teste do fornecedor" value="">
+                                            <div style="display: none;" id="dapDiv">
+                                                <label class="control-label">DAP do Fornecedor</label>
+                                                <input type="text" name="dapFornecedor" id="dapFornecedor" class="form-control" placeholder="Digite o DAP do fornecedor" value="<?php echo $dados['DAP_FORNECEDOR'] ?>">
                                             </div>
-            							</div>
+                                        </div>
 
                                         <div class="form-group col-lg-6">
                                             <label class="control-label">
@@ -108,6 +108,11 @@
                                             </label>
                                             <input type="text" name="complementoFornecedor" id="complementoFornecedor" placeholder="Digite o Complemento do Endereço do fornecedor" class="form-control" value="<?php echo $dados['COMPLEMENTO'] ?>">
                                         </div>
+
+                                        <div class="form-group col-lg-6">
+                                            <label class="control-label">Email</label>
+                                            <input type="email" name="emailFornecedor" id="emailFornecedor" class="form-control" placeholder="Digite o email do fornecedor" value="<?php echo $dados['EMAIL_FORNECEDOR'] ?>">
+                                        </div>
                                         
                                         <div class="form-group col-lg-6">
                                             <label class="control-label">
@@ -153,6 +158,10 @@
 
     <script src="<?php echo base_url('assets/scripts/viaCep.js')?>"></script>
     <script src="<?php echo base_url('assets/scripts/funcoes.js') ?>"></script>
+    <script src="<?php echo base_url('assets/scripts/class/Fornecedor.js') ?>"></script>
+    <script type="text/javascript">
+        window.app = new Fornecedor("form-edicao-fornecedores", ['nomeFornecedor', 'razaoSocial', 'cep', 'estadoFornecedor', 'cidadeFornecedor', 'bairroFornecedor', 'logradouroFornecedor', 'categoriasOfertadas[]']);
+    </script>
     <link href="<?php echo base_url('vendor/harvesthq/chosen/chosen.css') ?>" rel="stylesheet" >
     <link href="<?php echo base_url('vendor/harvesthq/chosen/chosen.min.css') ?>" rel="stylesheet" >   
     <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.jquery.js'); ?>"></script>

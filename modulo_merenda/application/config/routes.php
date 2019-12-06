@@ -112,7 +112,8 @@ $route['licitacoes']				= 'licitacao/licitacoesView';
 $route['pesquisa-licitacao']		= 'licitacao/pesquisarLicitacoes';
 $route['cadastrar-licitacao']		= 'licitacao/cadastrarLicitacao';
 $route['itens-licitacao/(:num)']	= 'licitacao/itensLicitacaoView/$1';
-$route['cadastrar-itenLicitacao']	= 'licitacao/cadastrarItensLicitacao';
+$route['cadastrar-itemLicitacao']	= 'licitacao/cadastrarItensLicitacao';
+$route['remover-itemLicitacao']		= 'licitacao/removerItemLicitacao';
 
 
 

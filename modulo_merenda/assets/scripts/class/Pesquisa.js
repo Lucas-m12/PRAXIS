@@ -12,6 +12,18 @@ class Pesquisa{
 
 		this.onSubmit();
 
+		switch (this.typeSearch){
+
+			case 2:
+				this.codFornecedor();
+			break;
+
+			case 3:
+				this.codPedido();
+			break;
+
+		}
+
 	}
 
 	onSubmit(){
@@ -30,12 +42,10 @@ class Pesquisa{
 
 				case 2:
 					this.searchDataFornecedor(values);
-					this.codFornecedor();
 				break;
 
 				case 3:
 					this.searchDataPedidos(values);
-					this.codPedido();
 				break;
 
 				case 4:
@@ -307,11 +317,12 @@ class Pesquisa{
 							`
 							<tr>
 
+								<td>${field.ID_LICITACAO}</td>
 								<td>${field.NUMERO_LICITACAO}</td>
 								<td>${field.NOME_FORNECEDOR}</td>
 								<td>${field.DATA_INICIO}</td>
 								<td>${field.DATA_FIM}</td>
-								<td><a href="#" class="btn btn-default btn-xs">Editar</a></td>
+								<td><a href="#" class="btn btn-success btn-xs" disabled>Imprimir</a>       <a href="#" class="btn btn-default btn-xs">Editar</a></td>
 
 							</tr>
 

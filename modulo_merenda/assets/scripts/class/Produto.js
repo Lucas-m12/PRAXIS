@@ -2,13 +2,15 @@ class Produto{
 
 	constructor(formEl, array, rotaCadastro, tipo = "cadastrado", rotaDestino = ""){
 
-		this.formEl = document.getElementById(formEl);
+		this.formEl 		= document.getElementById(formEl);
 
-		this.array = array;
+		this.array 			= array;
 
-		this.rotaCadastro = rotaCadastro;
+		this.rotaCadastro 	= rotaCadastro;
 
-		this.rotaDestino = rotaDestino;
+		this.rotaDestino 	= rotaDestino;
+
+		this.tipo 			= tipo;
 
 		this.onSubmit();
 

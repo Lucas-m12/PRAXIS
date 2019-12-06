@@ -95,7 +95,33 @@ class Licitacao extends CI_Controller{
 
 	public function cadastrarItensLicitacao(){
 
-		echo json_encode($_POST);
+		$this->load->library('form_validation');
+		
+	    $this->form_validation->set_rules('codigoLicitacao', 'código da licitação', 'required', array('required' => 'Você deve preencher a %s.'));
+	    $this->form_validation->set_rules('produtos', 'Produtos', 'required', array('required' => 'Você deve preencher a %s.'));
+	    $this->form_validation->set_rules('quantidade', 'Quantidade', 'required', array('required' => 'Você deve preencher o %s.'));
+
+
+        if ($this->form_validation->run() == FALSE) {
+           
+           echo json_encode("campos");
+
+        }else{
+
+           	$codigoLicitacao 	= $this->input->post("codigoLicitacao");
+           	$produto 		 	= $this->input->post("produtos");
+           	$quantidade 		= $this->input->post("quantidade");
+
+           	$this->licitacao->setIdLicitacao($codigoLicitacao);
+           	$this->licitacao->setProduto($produto);
+           	$this->licitacao->setQuantidade($quantidade);
+           	$this->licitacao->setSaldo($quantidade);
+           	
+           	$this->licitacao->cadastrarItemLicitacao();
+
+           	echo json_encode(['id'=>1]);
+
+        }
 
 	}
 
@@ -114,6 +140,19 @@ class Licitacao extends CI_Controller{
 		$this->load->view('template/main-view', $data);
 
 	}
+
+	public function removerItemLicitacao(){
+
+		$idProduto 		= $this->input->post("idProduto");
+		$idLicitacao 	= $this->input->post("codigoLicitacao");
+
+		$this->licitacao->setIdLicitacao($idLicitacao);
+		$this->licitacao->setProduto($idProduto);
+
+		$this->licitacao->removerProdutoLicitacao();
+
+	}
+
 
 
 

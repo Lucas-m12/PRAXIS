@@ -10,9 +10,18 @@ class LicitacaoModel extends CI_Model{
 	private $numero;
 	private $dataInicial;
 	private $dataFinal;
+    private $produto;
+    private $idLicitacao;
+    private $quantidade;
+    private $saldo;
 
-
-
+    public function getSaldo() {
+        return $this->saldo;
+    }
+     
+    public function setSaldo($saldo) {
+        $this->saldo = $saldo;
+    }
     
     public function getFornecedor(){
         return $this->fornecedor;
@@ -76,6 +85,30 @@ class LicitacaoModel extends CI_Model{
         $this->dataFinal = $dataFinal;
     }
 
+    public function getProduto(){
+        return $this->produto;
+    }
+
+    public function setProduto($produto){
+        $this->produto = $produto;
+    }
+
+    public function getIdLicitacao(){
+        return $this->idLicitacao;
+    }
+
+    public function setIdLicitacao($idLicitacao){
+        $this->idLicitacao = $idLicitacao;
+    }
+
+    public function getQuantidade(){
+        return $this->quantidade;
+    }
+
+    public function setQuantidade($quantidade){
+        $this->quantidade = $quantidade;
+    }
+
 
 
 
@@ -124,6 +157,27 @@ class LicitacaoModel extends CI_Model{
     	))->result_array()[0];
 
     }
+
+    public function cadastrarItemLicitacao(){
+
+        $this->db->query("INSERT INTO MM_ITENS_LICITACAO(ID_LICITACAO, ID_PRODUTO, QUANTIDADE, SALDO) VALUES(?, ?, ?, ?)", array(
+            $this->getIdLicitacao(),
+            $this->getProduto(),
+            $this->getQuantidade(),
+            $this->getSaldo()
+        ));
+
+    }
+
+    public function removerProdutoLicitacao(){
+
+        $this->db->query("DELETE FROM MM_ITENS_LICITACAO WHERE ID_PRODUTO = ? AND ID_LICITACAO = ?", array(
+            $this->getProduto(),
+            $this->getIdLicitacao()
+        ));
+
+    }
+
 
 
 

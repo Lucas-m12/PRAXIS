@@ -66,8 +66,9 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
-                                    <tr>                    
-                                        <th>NÚMERO DA LICITAÇÃO</th>            
+                                    <tr>
+                                    	<th>CÓDIGO DA LICITAÇÃO</th>
+                                        <th>NÚMERO</th>            
                                         <th>FORNECEDOR</th>
                                         <th>DATA DE INÍCIO</th>
                                         <th>DATA DE FIM</th>

@@ -20,7 +20,9 @@
         <link  href="<?php echo base_url('assets/plugins/dataTables/dataTables.bootstrap.css'); ?>" rel="stylesheet" />
         <script src="<?php echo base_url("assets/plugins/jquery-1.10.2.js"); ?>"  ></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
-        <script src="<?php echo base_url('assets/plugins/jquery.maskedinput-1.1.4.pack.js') ?>"></script>
+        <!-- <script src="<?php echo base_url('assets/plugins/jquery.maskedinput-1.1.4.pack.js') ?>"></script> -->
+        <script src="<?php echo base_url("assets/scripts/jquery.mask.js"); ?>"  ></script>
+
 
 
     </head>

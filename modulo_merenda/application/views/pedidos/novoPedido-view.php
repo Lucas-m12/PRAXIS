@@ -16,9 +16,9 @@
 									<div class="form-group col-lg-6">
 										<label class="control-label">Selecione o Fornecedor</label>
 										<select class="form-control" name="fornecedor" id="fornecedor">
-											<option disabled selected></option>
+											<option value="" selected></option>
 											<?php foreach ($fornecedores as $value): ?>
-												<option value="<?php echo $value['CODIGO_FORNECEDOR'] ?>"><?php echo $value['NOME_FORNECEDOR'] . " / " . $value['CNPJ_FORNECEDOR']; ?></option>
+												<option value="<?php echo $value['CODIGO_FORNECEDOR'] ?>"><?php echo $value['NOME_FORNECEDOR']; ?></option>
 											<?php endforeach ?>
 										</select>
 									</div>
