@@ -144,7 +144,7 @@
 
 	<script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
 	<script>
-		window.app = new Pesquisa("form-pesquisa-licitacao", "<?php echo base_url('pesquisa-licitacao') ?>", 5, "<?php echo base_url('editar-licitacao') ?>");
+		window.app = new Pesquisa("form-pesquisa-licitacao", "<?php echo base_url('pesquisa-licitacao') ?>", 5, "<?php echo base_url('editar-licitacao') ?>", "<?php echo base_url('editar-licitacao') ?>");
 	</script>
 
 	<script src="<?php echo base_url('assets/scripts/class/Licitacao.js') ?>"></script>

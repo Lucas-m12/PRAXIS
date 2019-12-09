@@ -268,7 +268,7 @@ class ItensPedido{
 			<tr id="tr">
 				<td class="idProduto">${values.produtos}</td>
 				<td>${values.nomeProduto}</td>
-				<td>${values.quantidade} ${values.unidadeMedida}</td>
+				<td class="quantidadeProduto">${values.quantidade} ${values.unidadeMedida}</td>
 				<td><button type='button' class='btn btn-danger btn-xs btn-delete'>Excluir</button></td>
 			</tr>
 
@@ -285,14 +285,16 @@ class ItensPedido{
 
 			let idProduto 	= tr.querySelector(".idProduto").innerHTML;
 			let codigoPedido= $("#codigoPedido").val();
+			let quantidade 	= tr.querySelector(".quantidadeProduto").innerHTML.split(" ")[0];
 
 
 			$.ajax({
 
 				type: "POST",
 				url: this.rotaremoverProduto,
-				data: {idProduto, codigoPedido},
+				data: {idProduto, codigoPedido, quantidade},
 				success: data =>{
+					console.log(data);
 					tr.remove();
 
 				}

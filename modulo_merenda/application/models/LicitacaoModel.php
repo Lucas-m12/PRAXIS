@@ -178,6 +178,39 @@ class LicitacaoModel extends CI_Model{
 
     }
 
+    // public function diminuirSaldo($codigoPedido, $idProduto){
+
+    //     $result = $this->db->query("SELECT MIL.ID_ITEM FROM MM_PEDIDOS_FORNECEDOR MPF INNER JOIN MM_LICITACOES ML USING(CODIGO_FORNECEDOR) INNER JOIN MM_ITENS_LICITACAO MIL USING(ID_LICITACAO) WHERE MPF.CODIGO_PEDIDO = ? AND MIL.ID_PRODUTO = ? AND ML.STATUS = ?", array(
+    //         $codigoPedido,
+    //         $idProduto,
+    //         1
+    //     ))->result_array()[0];
+
+    //     // if (count($result) > 0) {
+        
+    //     //     $this->db->query("UPDATE MM_ITENS_LICITACAO SET SALDO = ? WHERE ID_ITEM = ?", array(
+    //     //         $this->getSaldo(),
+    //     //         $result['ID_ITEM']
+    //     //     ));
+
+    //     // }
+
+    // }
+
+    public function alterarSaldo($codigoPedido, $idProduto, $quantidade){
+
+        $dados = $this->db->query("SELECT ML.ID_LICITACAO FROM MM_PEDIDOS_FORNECEDOR MPF INNER JOIN MM_LICITACOES ML USING(CODIGO_FORNECEDOR) WHERE MPF.CODIGO_PEDIDO = ? AND ML.STATUS = ?", array(
+            $codigoPedido,
+            1
+        ))->result_array()[0];
+
+        $this->db->query("UPDATE MM_ITENS_LICITACAO SET SALDO = SALDO + ? WHERE ID_LICITACAO = ? AND ID_PRODUTO = ?", array(
+            $quantidade,
+            $dados['ID_LICITACAO'],
+            $idProduto
+        ));
+
+    }
 
 
 

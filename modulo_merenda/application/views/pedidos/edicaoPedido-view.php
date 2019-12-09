@@ -35,21 +35,15 @@
 									</div>
 
 									<div style="display: block;" id="oculta">
-										<div class="form-group col-lg-6">
-											<label class="control-label">Selecione a categoria do produto</label>
-											<select class="form-control" name="categoria" id="categoria">
-												<option disabled selected></option>
-												<?php foreach ($categorias as $value): ?>
-													<option value="<?php echo $value['ID_CATEGORIA'] ?>"><?php echo $value['DESC_CATEGORIA'] ?></option>
-												<?php endforeach ?>
-											</select>
-										</div>
 
 										<div class="form-group col-lg-6">
 											<label class="control-label">Selecione os produtos do pedido</label>
-											<input type="hidden" name="idPedido" id="idPedido" value="">
+											<!-- <input type="hidden" name="idPedido" id="idPedido" value=""> -->
 											<select class="form-control" name="produtos" id="produtos">
-												<option></option>
+												<option selected></option>
+												<?php foreach ($produtos as $value): ?>
+													<option value="<?php echo $value['ID_PRODUTO'] ?>/<?php echo $value['DESC_PRODUTO'] ?>/<?php echo $value['SIGLA_UNIDADE_MEDIDA'] ?>/<?php echo $value['SALDO'] ?>"><?php echo $value['DESC_PRODUTO']; ?></option>
+												<?php endforeach ?>
 											</select>
 										</div>
 
@@ -60,6 +54,7 @@
 												<span class="input-group-addon" id="unidadeMedida"></span>
 											</div>
 											<input type="hidden" name="idUnidadeMedida" id="idUnidadeMedida">
+											<input type="hidden" name="saldo" id="saldo" value="">
 										</div>
 
 										<div class="form-group col-lg-6">
@@ -95,8 +90,8 @@
                                 		<tr id="tr">
                                 			<td class="idProduto"><?php echo $value['ID_PRODUTO'] ?></td>
                                 			<td><?php echo $value['DESC_PRODUTO'] ?></td>
-                                			<td><?php echo $value['QUANTIDADE'] ?> <?php echo $value['SIGLA_UNIDADE_MEDIDA'] ?></td>
-                                			<td><button type="button" id="<?php echo $value['ID_PRODUTO'] ?>" class="btn btn-danger btn-xs btn-delete" onclick="excluirProdutoPedido(this.id)">Excluir</button></td>
+                                			<td class="quantidadeProduto"><?php echo $value['QUANTIDADE'] ?> <?php echo $value['SIGLA_UNIDADE_MEDIDA'] ?></td>
+                                			<td><button type="button" id="<?php echo $value['ID_PRODUTO'] ?>" class="btn btn-danger btn-xs btn-delete" onclick="excluirProdutoPedido(this.id, this)">Excluir</button></td>
                                 		</tr>
                                 	<?php endforeach ?>
                                 </tbody>
@@ -189,12 +184,14 @@
         <?php endif ?>
 
 	<script>
-		function excluirProdutoPedido(idProduto) {
+		function excluirProdutoPedido(idProduto, linha) {
+			let tr 			= $(linha).parent().parent();
+			let quantidade 	= tr[0].querySelector(".quantidadeProduto").innerHTML.split(" ")[0]
 			$.ajax({
 
 				type: "POST",
 				url: "<?php echo base_url('excluir-itemPedido') ?>",
-				data: {idProduto, codigoPedido: $("#codigoPedido").val()},
+				data: {idProduto, codigoPedido: $("#codigoPedido").val(), quantidade},
 				success: data =>{
 					window.location.reload();
 				}

@@ -24,7 +24,7 @@ class Pedido extends CI_Controller{
 
 	public function viewPedidos(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$programas 				= $this->programa->listarProgramas();
 
@@ -47,7 +47,7 @@ class Pedido extends CI_Controller{
 
 	public function viewPedidoEscola(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$programas 				= $this->programa->listarProgramas();
 
@@ -69,7 +69,7 @@ class Pedido extends CI_Controller{
 
 	public function listaPedidosEscolaView(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$status 		= $this->pedido->listarStatusPedido();
 		$escolas		= $this->pedido->listarUnidadesEnsino();
@@ -99,7 +99,7 @@ class Pedido extends CI_Controller{
 
 	public function codigoPedido(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$codigo = $this->pedido->gerarCodigoPedido();
 
@@ -109,7 +109,7 @@ class Pedido extends CI_Controller{
 
 	public function codigoPedidoEscola(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$codigo = $this->pedido->gerarCodigoPedidoEscola();
 
@@ -119,7 +119,7 @@ class Pedido extends CI_Controller{
 
 	public function viewNovoPedido($codigoPedido){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$fornecedores 			= $this->fornecedor->listarFornecedoresLicitados();
 		$programas 				= $this->programa->listarProgramas();
@@ -135,7 +135,7 @@ class Pedido extends CI_Controller{
 
 	public function cadastrarInfoPedido(){
 		
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -168,7 +168,7 @@ class Pedido extends CI_Controller{
 
 	public function cadastrarInfoPedidoEscola(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -205,7 +205,7 @@ class Pedido extends CI_Controller{
 
 	public function viewProdutosPedido($codigoPedido){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$dadosPedido	 	= $this->pedido->dadosPedido($codigoPedido);
 		$produtos			= $this->fornecedor->produtosLicitados($dadosPedido['CODIGO_FORNECEDOR']);
@@ -222,7 +222,7 @@ class Pedido extends CI_Controller{
 
 	public function pesquisarProdutoFornecedor(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 
@@ -236,7 +236,7 @@ class Pedido extends CI_Controller{
 
 	public function pesquisarUndiadeMedidaFornecedor(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 
@@ -255,7 +255,7 @@ class Pedido extends CI_Controller{
 
 	public function cadastrarItensPedido(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -293,7 +293,7 @@ class Pedido extends CI_Controller{
 
 	public function cadastrarItensPedidoEscola(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -326,7 +326,7 @@ class Pedido extends CI_Controller{
 
 	public function pesquisarPedido(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 
@@ -344,7 +344,7 @@ class Pedido extends CI_Controller{
 
 	public function pesquisarPedidoEscola(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 
@@ -363,19 +363,19 @@ class Pedido extends CI_Controller{
 
 	public function editarPedidoView($codigoPedido){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$dadosPedido 		= $this->pedido->informacoesCompletaPedido($codigoPedido);
 		$status 			= $this->pedido->listarStatusPedido($dadosPedido['STATUS']);
-		$categorias			= $this->fornecedor->categoriasOfertadas($dadosPedido['CODIGO_FORNECEDOR']);
 		$itens 				= $this->pedido->informacoesCompletaItensPedido($codigoPedido);
+		$produtos 			= $this->fornecedor->produtosLicitados($dadosPedido['CODIGO_FORNECEDOR']);
 
 		$data['page'] 		= "pedidos/edicaoPedido-view";
 		$data['codigo'] 	= $codigoPedido;
 		$data['info']		= $dadosPedido;
 		$data['status']		= $status;
-		$data['categorias']	= $categorias;
 		$data['itens']		= $itens;
+		$data['produtos']	= $produtos;
 		
 		$this->load->view('template/main-view', $data);
 
@@ -433,7 +433,7 @@ class Pedido extends CI_Controller{
 
 	public function novoPedidoEscolaView($codigoPedido){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$fornecedores 			= $this->fornecedor->listarFornecedorEscola();
 		$programas 				= $this->programa->listarProgramas();
@@ -453,6 +453,9 @@ class Pedido extends CI_Controller{
 
 		$produto 		= $this->input->post("idProduto");
 		$codigoPedido 	= $this->input->post("codigoPedido");
+		$quantidade 	= $this->input->post("quantidade");
+
+		$this->licitacao->alterarSaldo($codigoPedido, $produto, $quantidade);
 
 		$this->pedido->excluirProdutoPedido($produto, $codigoPedido);
 
@@ -471,7 +474,7 @@ class Pedido extends CI_Controller{
 
 	public function ItensPedidoEscolaView($codigoPedido){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$dadosPedido	 	= $this->pedido->dadosPedidoEscola($codigoPedido);
 		$categorias			= $this->categoria->categorias();

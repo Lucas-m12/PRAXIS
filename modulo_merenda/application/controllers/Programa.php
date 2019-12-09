@@ -13,7 +13,7 @@ class Programa extends CI_Controller{
 
 	public function listarProgramas(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->programa->listarProgramas();
 
@@ -26,7 +26,7 @@ class Programa extends CI_Controller{
 
 	public function edicaoPrograma($idPrograma = false){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->programa->dadosPrograma($idPrograma);
 
@@ -39,7 +39,7 @@ class Programa extends CI_Controller{
 
 	public function cadastrarPrograma(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 
 		$this->load->library('form_validation');
@@ -69,7 +69,7 @@ class Programa extends CI_Controller{
 
 	public function edicaoProgramaView($idPrograma){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->programa->dadosPrograma($idPrograma);
 

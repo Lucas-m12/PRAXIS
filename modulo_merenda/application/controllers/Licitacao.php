@@ -57,7 +57,7 @@ class Licitacao extends CI_Controller{
 
 	public function cadastrarLicitacao(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 
 		$this->load->library('form_validation');
@@ -153,6 +153,20 @@ class Licitacao extends CI_Controller{
 
 	}
 
+	public function editarLicitacaoView($idLicitacao){
+
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$produtos 			= $this->produto->produtos();
+		$dadosLicitacao		= $this->licitacao->dadosLicitacao($idLicitacao);
+
+		$data['page'] 		= 'licitacoes/editarLicitacao-view';
+		$data['dados']		= $dadosLicitacao;
+		
+
+		$this->load->view('template/main-view', $data);
+
+	}
 
 
 

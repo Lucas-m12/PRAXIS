@@ -1,6 +1,6 @@
 class Pesquisa{
 
-	constructor(formEl, rotaBusca, typeSearch, rotaEdicao = ""){
+	constructor(formEl, rotaBusca, typeSearch, rotaEdicao = "", rotaDestino = ""){
 
 		this.formEl 	= document.getElementById(formEl);
 
@@ -9,6 +9,8 @@ class Pesquisa{
 		this.typeSearch = typeSearch;
 
 		this.rotaEdicao = rotaEdicao;
+
+		this.rotaDestino = rotaDestino;
 
 		this.onSubmit();
 
@@ -322,7 +324,7 @@ class Pesquisa{
 								<td>${field.NOME_FORNECEDOR}</td>
 								<td>${field.DATA_INICIO}</td>
 								<td>${field.DATA_FIM}</td>
-								<td><a href="#" class="btn btn-success btn-xs" disabled>Imprimir</a>       <a href="#" class="btn btn-default btn-xs">Editar</a></td>
+								<td><a href="#" class="btn btn-success btn-xs" disabled>Imprimir</a>       <a href="${this.rotaDestino}/${field.ID_LICITACAO}" class="btn btn-default btn-xs">Editar</a></td>
 
 							</tr>
 

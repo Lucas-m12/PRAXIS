@@ -75,6 +75,7 @@ class Estoque{
 				data: values,
 				success: data =>{
 					let dados = JSON.parse(data);
+					console.log(dados)
 
 					if (dados.length == 0) {
 						swal.fire({

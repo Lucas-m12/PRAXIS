@@ -16,7 +16,7 @@ class Produto extends CI_Controller{
 
 	public function viewProdutos(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$categorias 			= $this->categoria->categorias();
 		$tiposProduto 			= $this->produto->tiposProduto();
@@ -33,7 +33,7 @@ class Produto extends CI_Controller{
 
 	public function viewTiposProdutos(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->produto->tiposProduto();
 
@@ -46,7 +46,7 @@ class Produto extends CI_Controller{
 
 	public function cadastrarTipoProduto(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -71,7 +71,7 @@ class Produto extends CI_Controller{
 
 	public function pesquisarProduto(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 
@@ -87,7 +87,7 @@ class Produto extends CI_Controller{
 
 	public function cadastrarProduto(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -124,7 +124,7 @@ class Produto extends CI_Controller{
 
 	public function atualizarProdutoView($idProduto){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$info 					= $this->produto->informacoesProduto($idProduto);
 		$categorias 			= $this->categoria->categorias($info['ID_CATEGORIA']);
@@ -144,7 +144,7 @@ class Produto extends CI_Controller{
 
 	public function atualizarProduto(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -183,7 +183,7 @@ class Produto extends CI_Controller{
 
 	public function editarTipoProdutoView($idTipo){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->produto->dadosTipoProduto($idTipo);
 
@@ -198,7 +198,7 @@ class Produto extends CI_Controller{
 
 	public function atualizarTipoProduto(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		

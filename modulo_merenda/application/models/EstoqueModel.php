@@ -5,9 +5,9 @@ class EstoqueModel extends CI_Model{
 
 	public function pesquisarEstoque($programa = "", $produto = ""){
 
-		return $this->db->query("SELECT * FROM MM_ESTOQUE ME WHERE ME.ID_PROGRAMA LIKE ? AND ME.ID_PRODUTO LIKE ?", array(
-			$programa,
-			$produto
+		return $this->db->query("SELECT MP.DESC_PROGRAMA, P.DESC_PRODUTO, MUM.SIGLA_UNIDADE_MEDIDA, ME.ESTOQUE_ATUAL FROM MM_ESTOQUE ME INNER JOIN MM_PROGRAMAS MP USING(ID_PROGRAMA) INNER JOIN MM_PRODUTOS P USING(ID_PRODUTO) INNER JOIN MM_UNIDADES_MEDIDA MUM USING(ID_UNIDADE_MEDIDA) WHERE ME.ID_PROGRAMA LIKE ? AND ME.ID_PRODUTO LIKE ?", array(
+			"%".$programa."%",
+			"%".$produto."%"
 		))->result_array();
 
 	}

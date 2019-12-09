@@ -17,7 +17,7 @@ class Estoque extends CI_Controller {
 
 	public function estoqueAtual(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$programa 	= $this->programa->listarProgramas();
 		$categoria 	= $this->categoria->categorias();
@@ -32,7 +32,7 @@ class Estoque extends CI_Controller {
 
 	public function pesquisarEstoque(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 

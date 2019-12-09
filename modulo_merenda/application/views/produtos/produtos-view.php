@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div class="row" id="oculta" style="display: block;">
+        <div class="row" id="oculta" style="display: none;">
         	<div class="col-lg-12">
         		<div class="panel panel-default">
         			<div class="panel-heading">Cadastro de Produto</div>

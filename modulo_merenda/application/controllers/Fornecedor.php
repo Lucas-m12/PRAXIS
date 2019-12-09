@@ -15,7 +15,7 @@ class Fornecedor extends CI_Controller{
 
 	public function viewFornecedores(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$data['page'] = "fornecedores/fornecedores-view";
 
@@ -26,7 +26,7 @@ class Fornecedor extends CI_Controller{
 
 	public function viewNovoFornecedor($codigoFornecedor){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$categorias = $this->categoria->categorias();
 
@@ -40,7 +40,7 @@ class Fornecedor extends CI_Controller{
 
 	public function pesquisarFornecedor(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$nomeFornecedor = $this->input->post("nomeFornecedorPesquisa");
 		$cnpjFornecedor = $this->input->post("cnpjFornecedorPesquisa");
@@ -54,7 +54,7 @@ class Fornecedor extends CI_Controller{
 
 	public function codigoFornecedor(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$codigo = $this->fornecedor->gerarCodigoFornecedor();
 
@@ -65,7 +65,7 @@ class Fornecedor extends CI_Controller{
 	public function cadastrarFornecedor(){
 
 		
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 
 		$this->load->library('form_validation');
@@ -139,7 +139,7 @@ class Fornecedor extends CI_Controller{
 
 	public function editarFornecedorView($codigoFornecedor){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$dadosFornecedor 	= $this->fornecedor->dadosFornecedor($codigoFornecedor);
 		$ofertas 			= $this->fornecedor->categoriasOfertadas($codigoFornecedor);
@@ -159,7 +159,7 @@ class Fornecedor extends CI_Controller{
 	public function atualizarFornecedor(){
 
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 
 		$this->load->library('form_validation');

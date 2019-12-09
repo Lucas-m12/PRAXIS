@@ -13,7 +13,7 @@ class Categoria extends CI_Controller{
 
 	public function listarCategorias(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->categoria->categorias();
 
@@ -26,7 +26,7 @@ class Categoria extends CI_Controller{
 
 	public function cadastrarCategoria(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
@@ -52,7 +52,7 @@ class Categoria extends CI_Controller{
 
 	public function editarCategoriaView($idCategoria){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$result = $this->categoria->dadosCategoria($idCategoria);
 
@@ -66,7 +66,7 @@ class Categoria extends CI_Controller{
 
 	public function atualizarCategoria(){
 
-		if($this->session->userdata('logado')){}else {redirect('login');}
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
 		$this->load->library('form_validation');
 		
