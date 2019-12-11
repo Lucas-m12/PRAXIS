@@ -48,10 +48,15 @@
         					<div class="col-lg-12">
         						<form method="post" action="" role="form" id="form-programa">
         							
-        							<div class="form-group">
+        							<div class="form-group col-lg-6">
         								<label>Nome do Programa</label>
         								<input type="text" name="programa" id="programa" class="form-control" placeholder="Digite o nome do programa">
         							</div>
+
+                                    <div class="form-group col-lg-6">
+                                        <label>Sigla do Programa</label>
+                                        <input type="text" name="siglaPrograma" id="siglaPrograma" class="form-control" placeholder="Digite a sigla do programa">
+                                    </div>
         					</div>
         				</div>
         			</div>

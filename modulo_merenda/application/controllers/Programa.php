@@ -54,8 +54,10 @@ class Programa extends CI_Controller{
         }else{
 
            $nomePrograma = $this->input->post('programa');
+           $siglaPrograma= $this->input->post('siglaPrograma');
 
            $this->programa->setPrograma($nomePrograma);
+           $this->programa->setSigla($siglaPrograma);
            $this->programa->cadastrarPrograma();
 
            echo json_encode(['id'=>1]);
@@ -92,11 +94,13 @@ class Programa extends CI_Controller{
         }else{
 
            $nomePrograma 	= $this->input->post('programa');
+           $siglaPrograma	= $this->input->post('siglaPrograma');
            $statusPrograma 	= $this->input->post('statusPrograma');
            $idPrograma 		= $this->input->post('idPrograma');
 
            $this->programa->setPrograma($nomePrograma);
            $this->programa->setStatus($statusPrograma);
+           $this->programa->setSigla($siglaPrograma);
            $this->programa->atualizarPrograma($idPrograma);
 
            echo json_encode(['id'=>1]);

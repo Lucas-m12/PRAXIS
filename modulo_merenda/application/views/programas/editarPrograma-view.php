@@ -16,6 +16,10 @@
         								<label>Nome do Programa</label>
         								<input type="text" name="programa" id="programa" class="form-control" placeholder="Digite o nome do programa" value="<?php echo $dados['DESC_PROGRAMA'] ?>">
         							</div>
+                                    <div class="form-group col-lg-6">
+                                        <label>Sigla do Programa</label>
+                                        <input type="text" name="siglaPrograma" id="siglaPrograma" class="form-control" placeholder="Digite a sigla do programa" value="<?php echo $dados['PROGRAMA'] ?>">
+                                    </div>
 
                                     <div class="form-group">
                                         <input type="checkbox" name="statusPrograma" id="statusPrograma" <?php if ($dados['STATUS'] == 2): ?> checked <?php endif ?>>Inativo

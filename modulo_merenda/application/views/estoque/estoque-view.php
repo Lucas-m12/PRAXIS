@@ -73,6 +73,7 @@
                     <a href="<?php echo base_url(); ?>inicio" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="submit" name="pesquisarEstoque" id="pesquisarEstoque" class="btn btn-success">Pesquisar</button>
+                    <a href="<?php echo base_url('relatorio-estoque') ?>" target="new">imprimir</a>
                 </div>
                 </form>
             </div>

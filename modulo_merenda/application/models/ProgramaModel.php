@@ -5,6 +5,15 @@ class ProgramaModel extends CI_Model{
 
 	private $programa;
 	private $status;
+	private $sigla;
+
+	public function getSigla(){
+		return $this->sigla;
+	}
+
+	public function setSigla($value){
+		$this->sigla = mb_strtoupper($value);
+	}
 
 	public function getStatus(){
 		return $this->status;
@@ -48,15 +57,17 @@ class ProgramaModel extends CI_Model{
 
 	public function cadastrarPrograma(){
 
-		$this->db->query("INSERT INTO MM_PROGRAMAS(DESC_PROGRAMA) VALUES(?)", array(
-			"?"=>$this->getPrograma()
+		$this->db->query("INSERT INTO MM_PROGRAMAS(PROGRAMA, DESC_PROGRAMA) VALUES(?, ?)", array(
+			$this->getSigla(),
+			$this->getPrograma()
 		));
 
 	}
 
 	public function atualizarPrograma($idPrograma){
 
-		$this->db->query("UPDATE MM_PROGRAMAS SET DESC_PROGRAMA = ?, STATUS = ? WHERE ID_PROGRAMA = ?", array(
+		$this->db->query("UPDATE MM_PROGRAMAS SET PROGRAMA = ?, DESC_PROGRAMA = ?, STATUS = ? WHERE ID_PROGRAMA = ?", array(
+			$this->getSigla(),
 			$this->getPrograma(),
 			$this->getStatus(),
 			$idPrograma

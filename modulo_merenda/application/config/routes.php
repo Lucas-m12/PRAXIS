@@ -118,6 +118,10 @@ $route['editar-licitacao/(:num)']	= 'licitacao/editarLicitacaoView/$1';
 // perCapita
 $route['perCapita']					= 'perCapita/perCapitaView';
 $route['cadastrar-perCapita']		= 'perCapita/cadastrarPerCapita';
+// Relatórios
+$route['relatorio-estoque']			= 'estoque/relatorioEstoque';
+$route['relatorio-licitacao/(:num)']= 'licitacao/relatorioLicitacao/$1';
+$route['relatorio-pedido/(:num)']	= 'pedido/relatorioPedido/$1';
 
 
 
