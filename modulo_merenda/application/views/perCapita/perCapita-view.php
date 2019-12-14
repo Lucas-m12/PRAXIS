@@ -94,10 +94,10 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <a type="button" class="btn btn-info" href="<?php echo base_url('pedidos') ?>">Voltar</a>
+                    <a type="button" class="btn btn-info" href="<?php echo base_url('perCapita') ?>">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="button" class="btn btn-success" id="btn-avancar" name="btn-avancar">Finalizar</button>
+                    <a type="button" class="btn btn-success" id="btn-avancar" name="btn-avancar" href="<?php echo base_url('perCapita') ?>">Finalizar</a>
                 </div>
             </div>
         </div>

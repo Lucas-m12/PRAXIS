@@ -17,6 +17,19 @@ class PerCapita extends CI_Controller{
 
 		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
+		$dadosPerCapita			= $this->perCapita->dadosPerCapita();
+
+		$data['page']			= "perCapita/perCapita";
+		$data['perCapita']		= $dadosPerCapita;
+
+		$this->load->view('template/main-view', $data);
+
+	}
+
+	public function cadastroPerCapitaView(){
+
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
 		$niveisEnsino			= $this->perCapita->listarNiveisEnsino();
 		$produtos				= $this->produto->produtos();
 
@@ -60,6 +73,30 @@ class PerCapita extends CI_Controller{
 
 
         }
+
+	}
+
+	public function editarPerCapitaView($idPercapita){
+
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$dadosPerCapita			= $this->perCapita->infoPerCapita($idPercapita);
+
+		$data['page']			= "perCapita/edicaoPerCapita-view";
+		$data['perCapita']		= $dadosPerCapita;
+
+		$this->load->view('template/main-view', $data);
+
+	}
+
+	public function editarPerCapita(){
+
+		$idPercapita 	= $this->input->post("idPercapita");
+		$valorPerCapita	= $this->input->post("valorPerCapita");
+
+		$this->perCapita->setPerCapita($valorPerCapita);
+		
+		$this->perCapita->editarPerCapita($idPercapita);
 
 	}
 

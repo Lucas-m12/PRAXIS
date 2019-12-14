@@ -21,7 +21,20 @@ class Pedido extends CI_Controller{
 
 		$this->load->library('../controllers/Relatorio.php', "relatorio");
 
+		
 
+
+
+	}
+
+	public function email($codigoFornecedor){
+		$this->load->library('email');
+		$dados = $this->fornecedor->dadosFornecedor($codigoFornecedor);
+
+		$this->email->from($emailDestinatario, $destinatario);
+		$this->email->to($emailRemetente);
+		$this->email->subject('Send Email Codeigniter');
+		$this->email->message('The email send using codeigniter library');
 
 	}
 

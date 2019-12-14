@@ -15,6 +15,8 @@ class Licitacao extends CI_Controller{
 
 		$this->load->library('../controllers/Relatorio.php', "relatorio");
 
+		$this->load->model('pedidoModel', 'pedido');
+
 
 	}
 
