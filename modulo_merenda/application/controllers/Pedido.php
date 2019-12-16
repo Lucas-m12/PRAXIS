@@ -562,7 +562,7 @@ class Pedido extends CI_Controller{
 		#NOME DO RELATÓRIO#
 		$pdf->SetFont('Times','B', 14);
 		$pdf->Cell(200,5, utf8_decode('INFORMAÇÕES DO PEDIDO'), 0, 1,'C');
-		$pdf->Ln(20);
+		$pdf->Ln();
 		$pdf->SetFont('Times','', 10);
 		$pdf->Cell(35,5, utf8_decode('Código do Pedido: ' . $dados[0]['CODIGO_PEDIDO']), 1, 0, 'L');
 		$pdf->Cell(45,5, utf8_decode('Data do Pedido: ' . date("d/m/Y", strtotime(explode(" ", $dados[0]['DATA_PEDIDO'])[0]))), 1, 0, 'L');
@@ -591,21 +591,29 @@ class Pedido extends CI_Controller{
 		$pdf->SetFont('Times','B', 14);
 		$pdf->Cell(200,5, utf8_decode('ITENS DO PEDIDO'), 0, 1,'C');
 		$pdf->SetFont('Times','B', 10);
-		$pdf->Ln(10);
+		$pdf->Ln();
 
-		$pdf->Cell(50,5, utf8_decode("CÓDIGO DO PRODUTO"), 1, 0, 'L');
-		$pdf->Cell(70,5, utf8_decode("PRODUTO"), 1, 0, 'L');
-		$pdf->Cell(70,5, utf8_decode("QUANTIDADE"), 1, 0, 'L');
+		$pdf->Cell(50,5, utf8_decode("Código do Produto"), 1, 0, 'C');
+		$pdf->Cell(60,5, utf8_decode("Produto"), 1, 0, 'C');
+		$pdf->Cell(30,5, utf8_decode("Quantidade"), 1, 0, 'C');
+		$pdf->Cell(50,5, utf8_decode("Unidade"), 1, 0, 'C');
+
 		$pdf->Ln();
 		$pdf->SetFont('Times','', 10);
 
 		foreach ($dados as $value) {
-			$pdf->Cell(50,5, utf8_decode($dados[0]['ID_PRODUTO']), 1, 0, 'L');
-			$pdf->Cell(70,5, utf8_decode(mb_convert_case($value['DESC_PRODUTO'], MB_CASE_TITLE, 'UTF-8')), 1, 0, 'L');
-			$pdf->Cell(70,5, utf8_decode($value['QUANTIDADE'] . " " . $value['SIGLA_UNIDADE_MEDIDA']), 1, 0, 'L');
+			$pdf->Cell(50,5, utf8_decode($dados[0]['ID_PRODUTO']), 1, 0, 'C');
+			$pdf->Cell(60,5, utf8_decode(mb_convert_case($value['DESC_PRODUTO'], MB_CASE_TITLE, 'UTF-8')), 1, 0, 'L');
+			$pdf->Cell(30,5, utf8_decode($value['QUANTIDADE']), 1, 0, 'C');
+			$pdf->Cell(50,5, utf8_decode($value['DESC_UNIDADE_MEDIDA']), 1, 0, 'C');
 			$pdf->Ln();
 		}
-
+		$pdf->Ln(20);
+		$pdf->Cell(200,5, utf8_decode($this->session->userdata('momeProfissional')), 0, 0, 'C');
+		$pdf->Ln(0);
+		$pdf->Cell(200,5, utf8_decode("______________________________________________________"), 0, 0, 'C');
+		$pdf->Ln(5);
+		$pdf->Cell(200,5, utf8_decode("Responsável"), 0, 0, 'C');
 
 
 

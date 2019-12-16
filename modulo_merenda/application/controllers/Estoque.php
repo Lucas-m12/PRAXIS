@@ -107,7 +107,7 @@ class Estoque extends CI_Controller {
 		$pdf->SetFont('Times', '', 10);
 
 		foreach ($estoque as $value) {
-			$pdf->Cell(63, 5, utf8_decode($value['DESC_PROGRAMA']), 1, 0, 'C');
+			$pdf->Cell(63, 5, utf8_decode($value['PROGRAMA']), 1, 0, 'C');
 			$pdf->Cell(64, 5, utf8_decode($value['DESC_PRODUTO']), 1, 0, 'C');
 			$pdf->Cell(64, 5, utf8_decode($value['ESTOQUE_ATUAL'] . " " . $value['SIGLA_UNIDADE_MEDIDA']), 1, 0, 'C');
 			$pdf->Ln();

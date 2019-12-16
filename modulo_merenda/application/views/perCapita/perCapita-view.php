@@ -29,7 +29,7 @@
                                     				<option value="<?php echo $produto['ID_PRODUTO'] ?>"><?php echo $produto['DESC_PRODUTO'] ?></option>
                                     			<?php endforeach ?>
                                     		</select></td>
-                                    		<td><input type="number" name="percapita" class="form-control percapita"></td>
+                                    		<td><input type="number" name="percapita" class="form-control percapita" step="any" ></td>
                                     		<td><button type="button" class="btn btn-primary btn-xs" onclick="adicionar(this)">Adicionar</button></td>
                                     	</tr>
                                     <?php endforeach ?>

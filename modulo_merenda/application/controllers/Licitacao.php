@@ -215,10 +215,10 @@ class Licitacao extends CI_Controller{
 
 		#NOME DO RELATÓRIO#
 		$pdf->SetFont('Times','B', 14);
-		$pdf->Cell(200,5, utf8_decode('SOLICITAÇÃO DE GÊNEROS ALIMENTÍCIOS'), 0, 1,'C');
+		$pdf->Cell(200,5, utf8_decode('GÊNEROS ALIMENTÍCIOS LICITADOS'), 0, 1,'C');
 		$pdf->Ln(10);
 		$pdf->SetFont('Times','B', 10);
-		$pdf->Cell(200,5, utf8_decode('À EMPRESA ' . $dados[0]['NOME_FORNECEDOR']), 0, 1,'L');
+		$pdf->Cell(200,5, utf8_decode('EMPRESA: ' . $dados[0]['NOME_FORNECEDOR']), 0, 1,'L');
 		$pdf->Ln(1);
 		$pdf->SetFont('Times','', 10);
 		if ($dados[0]['CNPJ_FORNECEDOR'] != "") {
@@ -231,22 +231,31 @@ class Licitacao extends CI_Controller{
 		
 		$pdf->Ln(1);
 		$pdf->Cell(200,5, utf8_decode('PREGÃO PRESENCIAL Nº ' . $dados[0]['NUMERO_LICITACAO'] . '/' . explode(" ", $data_atual)[5]), 0, 1, 'L');
+		$pdf->Ln(1);
+		$pdf->Cell(200,5, utf8_decode('Vigência: ' . date("d/m/Y", strtotime($dados[0]['DATA_INICIO'])) . " à " . date("d/m/Y", strtotime($dados[0]['DATA_FIM']))), 0, 1, 'L');
 		$pdf->Ln(10);
-		$pdf->SetFont('Times','B', 10);
-		$pdf->Cell(20, 5, utf8_decode("CÓDIGO"), 1, 0, 'C');
-		$pdf->Cell(64, 5, utf8_decode("PRODUTO"), 1, 0, 'C');
-		$pdf->Cell(46, 5, utf8_decode("QUANTIDADE"), 1, 0, 'C');
-		$pdf->Cell(60, 5, utf8_decode("UNIDADE DE MEDIDA"), 1, 0, 'C');
-
+		$pdf->SetFont('Times','B', 14);
+		
+		$pdf->Cell(200,5, utf8_decode('Movimento Saldo'), 0, 1,'C');
+		$pdf->Ln();
+		$pdf->SetFont('Times','B', 9);
+		$pdf->Cell(10, 5, utf8_decode("Cód"), 1, 0, 'C');
+		$pdf->Cell(60, 5, utf8_decode("Produto"), 1, 0, 'C');
+		$pdf->Cell(25, 5, utf8_decode("Qtd. Licitada"), 1, 0, 'C');
+		$pdf->Cell(25, 5, utf8_decode("Qtd. Pedida"), 1, 0, 'C');
+		$pdf->Cell(25, 5, utf8_decode("Saldo Disponível"), 1, 0, 'C');
+		$pdf->Cell(50, 5, utf8_decode("Unidade"), 1, 0, 'C');
 		$pdf->Ln();
 		$pdf->SetFont('Times', '', 10);
 
-		
+			
 		foreach ($dados as $value) {
-			$pdf->Cell(20, 5, utf8_decode($value['ID_PRODUTO']), 1, 0, 'C');
-			$pdf->Cell(64, 5, utf8_decode($value['DESC_PRODUTO']), 1, 0, 'C');
-			$pdf->Cell(46, 5, utf8_decode($value['QUANTIDADE']), 1, 0, 'C');
-			$pdf->Cell(60, 5, utf8_decode($value['DESC_UNIDADE_MEDIDA']), 1, 0, 'C');
+			$pdf->Cell(10, 5, utf8_decode($value['ID_PRODUTO']), 1, 0, 'C');
+			$pdf->Cell(60, 5, utf8_decode($value['DESC_PRODUTO']), 1, 0, 'C');
+			$pdf->Cell(25, 5, utf8_decode($value['QUANTIDADE']), 1, 0, 'C');
+			$pdf->Cell(25, 5, utf8_decode(floatval($value['QUANTIDADE']) - floatval($value['SALDO'])), 1, 0, 'C');
+			$pdf->Cell(25, 5, utf8_decode($value['SALDO']), 1, 0, 'C');
+			$pdf->Cell(50, 5, utf8_decode($value['DESC_UNIDADE_MEDIDA']), 1, 0, 'C');
 			$pdf->Ln();
 		}
 
