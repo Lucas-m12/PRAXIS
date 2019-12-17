@@ -87,6 +87,7 @@ class Pesquisa{
 
 	searchDataProduto(values){
 		let corpo = $("#corpoTabela");
+		corpo.empty();
 		$.ajax({
 
 			type: "POST",
@@ -131,6 +132,7 @@ class Pesquisa{
 	searchDataFornecedor(values){
 		let data = values;
 		let corpo = $("#corpoTabela");
+		corpo.empty();
 		$.ajax({
 
 			type: "POST",
@@ -198,7 +200,7 @@ class Pesquisa{
 					dados.forEach((field, index) => {
 						let editar = "";
 
-						if (field.ID_STATUS != false && field.ID_STATUS != 4) {
+						if (field.ID_STATUS != false && field.ID_STATUS != 4 && field.ID_STATUS != 3) {
 							editar = `<a href='${this.rotaEdicao}/${field.CODIGO_PEDIDO}' class='btn btn-default btn-xs'>editar</a>`
 						}
 						
@@ -212,7 +214,7 @@ class Pesquisa{
 						 		<td>${field.DATA_PEDIDO}</td>
 						 		<td>${field.NOME_FORNECEDOR}</td>
 						 		<td><button class="btn btn-xs btn-outline" type="button" name="btn-status" style="color: ${field.COR};">${field.TIPO_STATUS}</button></td>
-						 		<td><a href="${this.rotaImpressao}/${field.CODIGO_PEDIDO}" type="button" class="btn btn-success btn-xs" target="new">Imprimir</a>         ${editar}</td>
+						 		<td><a href="${this.rotaImpressao}/${field.CODIGO_PEDIDO}/pedido" type="button" class="btn btn-success btn-xs" target="new">Imprimir</a>         ${editar}</td>
 						 	`
 						 document.getElementById('corpoTabela').appendChild(tr);
 
@@ -326,7 +328,7 @@ class Pesquisa{
 								<td>${field.NOME_FORNECEDOR}</td>
 								<td>${field.DATA_INICIO}</td>
 								<td>${field.DATA_FIM}</td>
-								<td><a href="${this.rotaImpressao}/${field.ID_LICITACAO}" class="btn btn-success btn-xs" target="new">Imprimir</a>       <a href="${this.rotaDestino}/${field.ID_LICITACAO}" class="btn btn-default btn-xs">Editar</a></td>
+								<td><a href="${this.rotaImpressao}/${field.ID_LICITACAO}/licitacao" class="btn btn-success btn-xs" target="new">Imprimir</a>       <a href="${this.rotaDestino}/${field.ID_LICITACAO}" class="btn btn-default btn-xs">Editar</a></td>
 
 							</tr>
 

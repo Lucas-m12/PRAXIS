@@ -10,20 +10,16 @@
                                     <tr>
                                         
                                         <th>NÍVEL DE ENSINO</th>
-                                        <th>PRODUTO</th>
-                                        <th>PERCAPITA</th>
                                         <th>AÇÃO</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <?php foreach ($perCapita as $value): ?>
+                                    <?php foreach ($niveisEnsino as $value): ?>
                                     	<tr>
                                     		<td><?php echo $value['DS_NIVEL_ENSINO'] ?></td>
-                                            <td><?php echo $value['DESC_PRODUTO'] ?></td>
-                                            <td><?php echo $value['VALOR_PERCAPITA'] ?></td>
-                                            <td><a type="button" href="<?php echo base_url('edicao-percapitaView') . '/' . $value['ID_PERCAPITA']; ?>" class="btn btn-default btn-xs">Editar</a></td>
+                                            <td><a type="button" href="<?php echo base_url('edicao-percapitaView') . '/' . $value['ID_NIVEL_ENSINO']; ?>" class="btn btn-default btn-xs">Editar</a> <a type="button" class="btn btn-success btn-xs" href="<?php echo base_url('#') ?>" disabled>Imprimir</a></td>
                                     	</tr>
                                     <?php endforeach ?>
                                     
@@ -46,7 +42,7 @@
                     <a type="button" class="btn btn-info" href="<?php echo base_url('inicio') ?>">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <a type="button" href="<?php echo base_url('cadastro-percapita') ?>" class="btn btn-success" id="btn-avancar" name="btn-avancar">Novo PerCapita</a>
+                    <!-- <a type="button" href="<?php echo base_url('cadastro-percapita') ?>" class="btn btn-success" id="btn-avancar" name="btn-avancar">Novo PerCapita</a> -->
                 </div>
             </div>
         </div>

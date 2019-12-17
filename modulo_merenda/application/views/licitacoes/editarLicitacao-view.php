@@ -47,13 +47,18 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <button type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</button>
+                    <a type="button" href="<?php echo base_url('licitacoes') ?>" class="btn btn-info" >Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="submit" class="btn btn-success" id="btn-finalizar" name="btn-finalizar">Avançar</button>
+                    <button type="submit" class="btn btn-success" id="btn-finalizar" name="btn-finalizar">Finalizar Edição</button>
                 </div>
                 </form>
             </div>
         </div>
+
+        <script src="<?php echo base_url('assets/scripts/class/Licitacao.js') ?>"></script>
+        <script>
+        	window.app = new Licitacao("form-licitacao", ['numeroLicitacao', 'dataInicio', 'dataFim'], "<?php echo base_url('atualizar-licitacao') ?>", "<?php echo base_url('licitacoes') ?>", 2);
+        </script>
 
 

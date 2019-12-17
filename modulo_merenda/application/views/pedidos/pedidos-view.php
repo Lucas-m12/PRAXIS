@@ -101,5 +101,5 @@
 
 	<script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
 	<script>
-		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedido') ?>", 3, "<?php echo base_url('editar-pedido') ?>", "", "<?php echo base_url('relatorio-pedido'); ?>");
+		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedido') ?>", 3, "<?php echo base_url('editar-pedido') ?>", "", "<?php echo base_url('relatorio'); ?>");
 	</script>

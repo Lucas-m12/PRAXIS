@@ -114,6 +114,10 @@ class ProdutoModel extends CI_Model{
 			$this->getUnidadeMedida()
 		));
 
+		$lastId = $this->db->insert_id();
+
+		return $lastId;
+
 	}
 
 	public function listarProdutosCategoria($idCategoria){

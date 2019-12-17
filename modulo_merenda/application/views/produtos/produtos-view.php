@@ -142,9 +142,14 @@
         </div>
 
     <script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
-    <script src="<?php echo base_url('assets/scripts/instancias/pesquisaProduto.js') ?>"></script>
+    <script>
+        window.app = new Pesquisa('form-pesquisa-produto', '<?php echo base_url('pesquisa-produto') ?> ', 1);
+    </script>
+    
     <script src="<?php echo base_url('assets/scripts/class/Produto.js') ?>"></script>
-    <script src="<?php echo base_url('assets/scripts/instancias/cadastroProduto.js') ?>"></script>
+    <script>
+        window.app = new Produto("form-produto", ['categoriaProduto', 'tipoProduto', 'unidadeMedida', 'produto'], '<?php echo base_url('cadastrar-produto') ?>' );
+    </script>
 
     <script type="text/javascript">
         function cadastrar(){

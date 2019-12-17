@@ -8,11 +8,8 @@
                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        
-                                        <th>CÓDIGO</th>
+                                                                            
                                         <th>NÍVEL DE ENSINO</th>
-                                        <th>PRODUTO</th>
-                                        <th>PERCAPITA</th>
                                         <th>AÇÃO</th>
 
                                     </tr>
@@ -29,7 +26,7 @@
                                     				<option value="<?php echo $produto['ID_PRODUTO'] ?>"><?php echo $produto['DESC_PRODUTO'] ?></option>
                                     			<?php endforeach ?>
                                     		</select></td>
-                                    		<td><input type="number" name="percapita" class="form-control percapita" step="any" ></td>
+                                    		<td><input type="number" name="percapita" class="form-control percapita"></td>
                                     		<td><button type="button" class="btn btn-primary btn-xs" onclick="adicionar(this)">Adicionar</button></td>
                                     	</tr>
                                     <?php endforeach ?>

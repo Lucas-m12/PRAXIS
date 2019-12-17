@@ -19,14 +19,6 @@
     <li class="">
         <a href="<?php echo base_url('inicio') ?>">Ínicio</a>
     </li>
-    
-    <li class="">
-        <a href="<?php echo base_url('estoque') ?>">Estoque</a>
-    </li>
-
-    <li class="">
-        <a href="<?php echo base_url('licitacoes') ?>">Licitações</a>
-    </li>
 
     <li>
         <a href="#">Cadastros<span class="fa arrow"></span></a>
@@ -53,6 +45,10 @@
         </ul>
     </li>
 
+    <li class="">
+        <a href="<?php echo base_url('licitacoes') ?>">Licitações</a>
+    </li>
+
     <li>
         <a href="#">Pedidos<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
@@ -66,6 +62,10 @@
         
     </li>
 
+    <li class="">
+        <a href="<?php echo base_url('estoque') ?>">Estoque</a>
+    </li>
+
     <li>
         <a href="#">Relatórios<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
@@ -73,7 +73,7 @@
                 <a href="#">Estoque</a>
             </li>
             <li>
-                <a href="#">PerCapita</a>
+                <a href="<?php echo base_url('relatorioPercapitaView') ?>">PerCapita</a>
             </li>
         </ul>
         

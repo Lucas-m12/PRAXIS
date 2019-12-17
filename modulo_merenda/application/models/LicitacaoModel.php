@@ -212,11 +212,22 @@ class LicitacaoModel extends CI_Model{
 
     }
 
-    public function relatorioLicitacao($idLicitacao){
+     public function relatorioLicitacao($idLicitacao){
 
         return $this->db->query("SELECT MF.CODIGO_FORNECEDOR, MF.NOME_FORNECEDOR, MF.CNPJ_FORNECEDOR, MF.CPF_FORNECEDOR, MF.DAP_FORNECEDOR, ML.NUMERO_LICITACAO, MP.DESC_PRODUTO, MP.ID_PRODUTO, MUM.DESC_UNIDADE_MEDIDA, MIL.QUANTIDADE, MIL.SALDO, ML.DATA_INICIO, ML.DATA_FIM FROM MM_LICITACOES ML INNER JOIN MM_FORNECEDOR MF USING(CODIGO_FORNECEDOR) INNER JOIN MM_ITENS_LICITACAO MIL USING(ID_LICITACAO) INNER JOIN MM_PRODUTOS MP USING(ID_PRODUTO) INNER JOIN MM_UNIDADES_MEDIDA MUM USING(ID_UNIDADE_MEDIDA) WHERE ML.ID_LICITACAO = ? ORDER BY MP.ID_PRODUTO", array(
             $idLicitacao
         ))->result_array();
+
+    }
+
+    public function atualizarLicitacao(){
+
+        $this->db->query("UPDATE MM_LICITACOES SET NUMERO_LICITACAO = ?, DATA_INICIO = ?, DATA_FIM = ? WHERE ID_LICITACAO = ?", array(
+            $this->getNumero(),
+            $this->getDataInicial(),
+            $this->getDataFinal(),
+            $this->getIdLicitacao()
+        ));
 
     }
 

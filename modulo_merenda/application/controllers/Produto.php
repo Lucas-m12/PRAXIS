@@ -10,6 +10,7 @@ class Produto extends CI_Controller{
 
 		$this->load->model("produtoModel", "produto");
 		$this->load->model("categoriaModel", "categoria");
+		$this->load->model("perCapitaModel", "perCapita");
 		
 
 	}
@@ -114,11 +115,27 @@ class Produto extends CI_Controller{
            $this->produto->setCategoriaProduto($categoriaProduto);
            $this->produto->setProduto($produto);
            $this->produto->setUnidadeMedida($unidadeMedida);
-           $this->produto->cadastrarProduto();
+           
+           $lastId = $this->produto->cadastrarProduto();
+           $this->cadastrarProdutoPerCapita($lastId);
 
            echo json_encode(['id'=>1]);
 
         }		
+
+	}
+
+	private function cadastrarProdutoPerCapita($produto){
+
+		$niveisEnsino = $this->perCapita->listarNiveisEnsino();
+
+		foreach ($niveisEnsino as $value) {
+			$this->perCapita->setProduto($produto);
+			$this->perCapita->setPerCapita(0);
+			$this->perCapita->setNivelEnsino($value['ID_NIVEL_ENSINO']);
+			$this->perCapita->cadastrarPerCapita();
+
+		}
 
 	}
 

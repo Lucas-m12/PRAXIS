@@ -4,22 +4,48 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Edição PerCapita</div>
                     <div class="panel-body">
-                        <form action="" method="POST" role="form" id="form-edicao-percapita"> 
-                            <div class="form-group col-lg-6">
-                                <label class="control-label">Nível de Ensino</label>
-                                <input type="text" name="nivelEnsino" id="nivelEnsino" class="form-control" value="<?php echo $perCapita['DS_NIVEL_ENSINO'] ?>" disabled>
-                                <input type="hidden" name="idPercapita" id="idPercapita" value="<?php echo $perCapita['ID_PERCAPITA'] ?>">
+                        <form action="" method="POST" role="form" id="form-edicao-percapita">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                                                                
+                                            <th>NÍVEL DE ENSINO</th>
+                                            <th>PRODUTO</th>
+                                            <th>PERCAPITA</th>
+                                            <th>AÇÃO</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <?php echo $perCapita[0]['DS_NIVEL_ENSINO'] ?>
+                                                <input type="hidden" name="idNivelEnsino" id="idNivelEnsino" value="<?php echo $perCapita[0]['ID_NIVEL_ENSINO'] ?>">
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="produto" id="produto">
+                                                        <option selected value=""></option>
+                                                        <?php foreach ($perCapita as $value): ?>
+                                                            <option value="<?php echo $value['ID_PRODUTO'] ?>"><?php echo $value['DESC_PRODUTO'] ?></option>
+                                                        <?php endforeach ?>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input type="number" name="valorPerCapita" id="valorPerCapita" class="form-control">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-success btn-xs" name="salvar" id="salvar" onclick="adicionar(this)">Salvar</button>
+                                            </td>
+                                        </tr>                                        
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="form-group col-lg-6">
-                                <label class="control-label">Produto</label>
-                                <input type="text" name="produto" id="produto" class="form-control" value="<?php echo $perCapita['DESC_PRODUTO'] ?>" disabled>
-                            </div>
-                            <div class="form-group col-lg-6">
-                                <label class="control-label">Valor PerCapita</label>
-                                <input type="number" name="valorPerCapita" id="valorPerCapita" class="form-control" value="<?php echo $perCapita['VALOR_PERCAPITA'] ?>">
-                            </div>
-                            
-                        
+                        </form>
                     </div>
                 </div>
             </div>
@@ -36,83 +62,71 @@
                     <a type="button" class="btn btn-info" href="<?php echo base_url('perCapita') ?>">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
-                    <button type="submit" class="btn btn-success" id="btn-cadastrar" name="btn-cadastrar">Salvar</button>
+                    <a type="button" class="btn btn-success" href="<?php echo base_url('perCapita') ?>">Finalizar</a>
                 </div>
-                </form>
+                
             </div>
         </div>
 
         <script type="text/javascript">
             $(document).ready(function(){
 
-                let formEl = document.getElementById('form-edicao-percapita');
+                $("#produto").change(function(){
 
-                formEl.addEventListener("submit", event =>{
+                    var valorPerCapita = $("#valorPerCapita");
 
-                    event.preventDefault();
+                    valorPerCapita.empty();
 
-                    let data = {};
-                    let isValid = true;
+                    $.ajax({
 
-                    [...formEl.elements].forEach(campos =>{
-
-                        if (campos.name == "valorPerCapita") {
-                            if (campos.value != "") {
-                               data[campos.name] = campos.value; 
-                            } else {
-                                campos.parentElement.classList.add('has-error');
-
-                                isValid = false;
-                            }
+                        type: "POST",
+                        url: "<?php echo base_url('valorPercapita') ?>",
+                        data: {idProduto: this.value, nivelEnsino: $("#idNivelEnsino").val()},
+                        success: data =>{
+                            let dados = JSON.parse(data);
                             
-                        } 
+                            valorPerCapita.val(JSON.parse(data)['VALOR_PERCAPITA']);
 
-                        if (campos.name == "idPercapita") {
-                            if (campos.value != "") {
-                                data[campos.name] = campos.value;
-                            } else {
-                                campos.parentElement.classList.add('has-error');
-
-                                isValid = false;
-                            }
                         }
 
                     });
-
-                    if (!isValid) {
-                        swal.fire({
-
-                            text: "Preencha o valor perCapita",
-                            icon: "error"
-
-                        });
-                    } else {
-
-                        $.ajax({
-
-                            type: "POST",
-                            url: "<?php echo base_url() ?>editarPerCapita",
-                            data,
-                            success: data =>{
-
-                                swal.fire({
-
-                                    text: "Atualização efetuada com sucesso",
-                                    icon: "success"
-
-                                }).then(result =>{
-
-                                    window.location.href = "<?php echo base_url() ?>perCapita";
-
-                                });
-
-                            }
-
-                        });
-
-                    }
 
                 });
 
             });
         </script>
+
+        <script type="text/javascript">
+            function adicionar(linha){
+                
+                linha.disabled = true;
+
+                let tr = $(linha).parent().parent();
+
+                let nivelEnsino = tr[0].querySelector("#idNivelEnsino").value;
+                let produto     = tr[0].querySelector("#produto").value;
+                let percapita   = tr[0].querySelector("#valorPerCapita").value;
+
+                $.ajax({
+
+                    type: "POST",
+                    url: "<?php echo base_url('editarPerCapita') ?>",
+                    data: {nivelEnsino, produto, percapita},
+                    success: data =>{
+
+                        swal.fire({
+
+                            text: "Salvo com sucesso",
+                            icon: "success"
+
+                        }).then(()=>{
+                            linha.disabled      = false;
+                        });
+
+                    }
+
+                });
+            }
+        </script>
+
+        

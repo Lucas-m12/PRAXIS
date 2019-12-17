@@ -115,16 +115,20 @@ $route['itens-licitacao/(:num)']		= 'licitacao/itensLicitacaoView/$1';
 $route['cadastrar-itemLicitacao']		= 'licitacao/cadastrarItensLicitacao';
 $route['remover-itemLicitacao']			= 'licitacao/removerItemLicitacao';
 $route['editar-licitacao/(:num)']		= 'licitacao/editarLicitacaoView/$1';
+$route['atualizar-licitacao']			= 'licitacao/atualizarLicitacao';
 // perCapita
 $route['perCapita']						= 'perCapita/perCapitaView';
-$route['cadastro-percapita']			= 'perCapita/cadastroPerCapitaView';
+// $route['cadastro-percapita']			= 'perCapita/cadastroPerCapitaView';
 $route['cadastrar-perCapita']			= 'perCapita/cadastrarPerCapita';
 $route['edicao-percapitaView/(:num)']	= 'perCapita/editarPerCapitaView/$1';
 $route['editarPerCapita']				= 'perCapita/editarPerCapita';
+$route['valorPercapita']				= 'perCapita/valorPercapita';
 // Relatórios
 $route['relatorio-estoque']				= 'estoque/relatorioEstoque';
-$route['relatorio-licitacao/(:num)']	= 'licitacao/relatorioLicitacao/$1';
-$route['relatorio-pedido/(:num)']		= 'pedido/relatorioPedido/$1';
+$route['relatorio/(:num)/licitacao']	= 'licitacao/relatorioLicitacao/$1';
+$route['relatorio/(:num)/pedido']		= 'pedido/relatorioPedido/$1';
+$route['relatorioPercapitaView']		= 'perCapita/relatorioPercapitaView';
+$route['relatorioPerCapita']			= 'perCapita/relatorioPerCapita';
 
 
 

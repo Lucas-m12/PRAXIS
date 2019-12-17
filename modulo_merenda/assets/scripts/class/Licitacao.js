@@ -1,11 +1,12 @@
 class Licitacao{
 
-	constructor(formEl, array, rotaCadastro, rotaDestino){
+	constructor(formEl, array, rotaCadastro, rotaDestino, type = 1){
 
 		this.formEl 		= document.getElementById(formEl);
 		this.array 			= array;
 		this.rotaCadastro 	= rotaCadastro;
 		this.rotaDestino	= rotaDestino;
+		this.type			= type;
 
 		this.onSubmit();
 
@@ -31,8 +32,18 @@ class Licitacao{
 
 			} else{
 
-				this.sendData(values);
+				
+				switch (this.type){
 
+					case 1:
+						this.sendData(values);
+					break;
+
+					case 2:
+						this.sendData(values, 2);
+					break;
+
+				}
 			}
 
 		});
@@ -64,7 +75,7 @@ class Licitacao{
 
 	}
 
-	sendData(values){
+	sendData(values, type = 1){
 
 		$.ajax({
 
@@ -83,7 +94,12 @@ class Licitacao{
 					});
 				}else{
 
-					window.location.href=`${this.rotaDestino}/${dados}`;
+					if (type == 1) {
+						window.location.href=`${this.rotaDestino}/${dados}`;
+					} else if (type == 2){
+						window.location.href=`${this.rotaDestino}`;
+					}
+					
 
 				}
 
