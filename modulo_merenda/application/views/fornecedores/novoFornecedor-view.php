@@ -139,7 +139,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
-                    <a href="<?php echo base_url('fornecedores'); ?>" type="button" class="btn btn-info" onclick="history.go(-1)">Voltar</a>
+                    <a href="<?php echo base_url('fornecedores'); ?>" type="button" class="btn btn-info">Voltar</a>
                     <a href="<?php echo base_url('inicio') ?>" type="button" class="btn btn-danger">Fechar</a>
                     <button type="reset" class="btn btn-default">Limpar</button>
                     <button type="submit" class="btn btn-success" name="btn-finalizar" id="btn-finalizar">Finalizar Cadastro</button>
