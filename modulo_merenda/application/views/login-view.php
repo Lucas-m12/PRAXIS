@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <form id="formuser" name="formuser" role="form" method="post" action="<?php echo base_url('autenticar'); ?>" >
                                 <fieldset>
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="Login" id="login" name="login" type="text" autofocus autocomplete="off" maxlength="30" >
+                                        <input class="form-control" placeholder="Login" id="login" name="login" type="text" autofocus autocomplete="off" maxlength="30">
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Senha" id='senha' name="password" type="password" maxlength="30">

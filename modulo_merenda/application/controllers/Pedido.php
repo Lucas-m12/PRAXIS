@@ -200,7 +200,7 @@ class Pedido extends CI_Controller{
         	$codigoPedido 	= $this->input->post("codigoPedido");
         	$fornecedor 	= $this->input->post("fornecedor");
         	$programa 		= $this->input->post("programa");
-        	$escola 		= 1;
+        	$escola 		= $this->session->userdata('ID_UNIDADE');
 
 
         	$this->pedido->setCodigoPedido($codigoPedido);
@@ -392,7 +392,6 @@ class Pedido extends CI_Controller{
 		$data['status']		= $status;
 		$data['itens']		= $itens;
 		$data['produtos']	= $produtos;
-		
 		$this->load->view('template/main-view', $data);
 
 
@@ -440,6 +439,7 @@ class Pedido extends CI_Controller{
 				$this->pedido->setProduto($value['ID_PRODUTO']);
 				$this->pedido->setQuantidade($value['QUANTIDADE']);
 				$this->pedido->setCodigoFornecedor($value['CODIGO_FORNECEDOR']);
+				$this->pedido->setEscola($value['ID_ESCOLA']);
 				$this->pedido->estoqueEscola();
 
 			}
@@ -531,6 +531,81 @@ class Pedido extends CI_Controller{
 		
 
 	}
+
+
+
+	public function viewPedidosGestor(){
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$dadosPedidos 	= $this->pedido->dadosPedidosGestor();
+
+		$data['page'] 	= "gestor/pedidos-view";
+		$data['dados']	= $dadosPedidos;
+		$this->load->view("template/main-view", $data);
+
+	}
+
+	public function viewAutorizacaoPedido($codigoPedido){
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$dadosPedido 	= $this->pedido->dadosPedidoAutorizacao($codigoPedido);
+
+		$data['page']	= 'gestor/autorizacao-view';
+		$data['dados']	= $dadosPedido;
+
+		$this->load->view("template/main-view", $data);
+
+	}
+
+	public function editarStatusPedidoEscolaView($codigoPedido){
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$dadosPedido 	= $this->pedido->informacoesPedidoEscola($codigoPedido);
+
+		$data['page']	= 'pedidos/autorizacaoPedidoEscola-view';
+		$data['dados']	= $dadosPedido;
+
+		$this->load->view("template/main-view", $data);
+	}
+
+	public function autorizarPedidoEscola(){
+
+		$codigoPedido 	= $this->input->post("codigoPedido");
+		$info 			= $this->pedido->buscarItensPedidoEscola($codigoPedido);
+
+		$this->pedido->setCodigoPedido($codigoPedido);
+		$this->pedido->autorizarPedidoEscola();
+
+		foreach ($info as $value) {
+			$this->pedido->setPrograma($value['ID_PROGRAMA']);
+			$this->pedido->setEscola($value['ID_ESCOLA']);
+			$this->pedido->setProduto($value['ID_PRODUTO']);
+			$this->pedido->setQuantidade($value['QUANTIDADE']);
+			$this->pedido->saidaProdutoCentral();
+			$this->pedido->diminuirEstoqueCentral();
+		}
+
+		redirect(base_url('pedidos-pendentesEscola'));
+
+	}
+
+	public function editarPedidoEscolaView($codigoPedido){
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$info 				= $this->pedido->informacoesPedidoEscola($codigoPedido);
+		$status 			= $this->pedido->listarStatusPedido($info[0]['STATUS']);
+		$produtos 			= $this->fornecedor->listarProdutosEscola();
+
+		$data['page']		= 'pedidos/edicaoPedidoEscola-view';
+		$data['info']		= $info;
+		$data['status']		= $status;
+		$data['produtos']	= $produtos;
+
+		$this->load->view("template/main-view", $data);
+
+	}
+
+
 
 
 

@@ -64,6 +64,7 @@ $route['inicio']          				= 'home/inicio';
 //Rotas Estoque
 $route['estoque'] 						= 'estoque/estoqueAtual';
 $route['pesquisar-estoque']				= 'estoque/pesquisarEstoque';
+$route['estoqueEscola']					= 'estoque/estoqueEscolaCentralView';
 // Rotas Pedidos
 $route['pedidos'] 						= 'pedido/viewPedidos';
 $route['codigo-pedido']					= 'pedido/codigoPedido';
@@ -79,6 +80,9 @@ $route['editar-statusPedido']			= 'pedido/editarStatusPedido';
 $route['excluir-itemPedido']			= 'pedido/excluirItemPedido';
 $route['pedidos-pendentesEscola']		= 'pedido/listaPedidosEscolaView';
 $route['lista-pedidoEscola']			= 'pedido/listarPedidosEscola';
+$route['editarPedido-escola/(:num)']	= 'pedido/editarStatusPedidoEscolaView/$1';
+$route['autorizar-pedidoEscola']		= 'pedido/autorizarPedidoEscola';
+
 // Rotas Programas
 $route['programas'] 					= 'programa/listarProgramas';
 $route['cadastrar-programa'] 			= 'programa/cadastrarPrograma';
@@ -123,6 +127,13 @@ $route['cadastrar-perCapita']			= 'perCapita/cadastrarPerCapita';
 $route['edicao-percapitaView/(:num)']	= 'perCapita/editarPerCapitaView/$1';
 $route['editarPerCapita']				= 'perCapita/editarPerCapita';
 $route['valorPercapita']				= 'perCapita/valorPercapita';
+// Receitas
+$route['receitas']						= 'receita/receitasView';
+$route['pesquisarReceita']				= 'receita/pesquisaReceita';
+$route['novaReceita']					= 'receita/novaReceitaView';
+$route['cadastrarReceita']				= 'receita/cadastrarReceita';
+$route['editarReceita/(:num)']			= 'receita/edicaoReceitaView/$1';
+$route['editarReceita']					= 'receita/editarReceita';
 // Relatórios
 $route['relatorio-estoque']				= 'estoque/relatorioEstoque';
 $route['relatorio/(:num)/licitacao']	= 'licitacao/relatorioLicitacao/$1';
@@ -145,4 +156,17 @@ $route['cadastrar-pedido-escola']		= 'pedido/cadastrarInfoPedidoEscola';
 $route['produtosPedidoEscola/(:num)'] 	= 'pedido/ItensPedidoEscolaView/$1';
 $route['cadastrar-itensPedidoEscola']	= 'pedido/cadastrarItensPedidoEscola';
 $route['excluir-itemPedidoEscola']		= 'pedido/excluirItemPedidoEscola';
-$route['editar-statusPedidoEscola']		= 'pedido/editarStatusPedidoEscola';
+$route['editarPedidoEscola/(:num)']		= 'pedido/editarPedidoEscolaView/$1';
+$route['finalizarPedidoEscola']			= 'pedido/editarStatusPedidoEscola';
+
+// ROTAS ESTOQUE
+
+$route['estoque-escola/(:num)']			= 'estoque/estoqueEscolaView/$1';
+$route['pesquisar-estoqueEscola']		= 'estoque/pesquisarEstoqueEscola';
+
+/////////////////////////////////////ROTAS PARA GESTOR//////////////////////////////////////////////////////////
+
+// ROTAS PEDIDOS
+
+$route['pedidos-gestor'] 				= 'pedido/viewPedidosGestor';
+$route['edicaoPedido-gestor/(:num)']	= 'pedido/viewAutorizacaoPedido/$1';

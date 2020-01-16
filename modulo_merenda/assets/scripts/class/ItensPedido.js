@@ -134,7 +134,7 @@ class ItensPedido{
 
 		quantidade.addEventListener("keyup", event =>{
 
-			if (quantidade.value > saldoEl.value) {
+			if (parseFloat(quantidade.value) > parseFloat(saldoEl.value)) {
 
 				swal.fire({
 					text: "Quantidade excede o limite licitado",
@@ -144,7 +144,7 @@ class ItensPedido{
 				quantidade.parentElement.classList.add('has-error');
 				btn.disabled = true;
 
-			} else if (quantidade.value < saldoEl.value) {
+			} else if (parseFloat(quantidade.value) < parseFloat(saldoEl.value)) {
 				quantidade.parentElement.classList.remove('has-error');
 				quantidade.parentElement.classList.add('has-success');
 				btn.disabled = false;

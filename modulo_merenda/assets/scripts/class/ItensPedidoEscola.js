@@ -14,6 +14,7 @@ class ItensPedidoEscola{
 		this.saveProduct();
 		this.onChange();
 
+
 	}
 
 
@@ -32,7 +33,12 @@ class ItensPedidoEscola{
 						data: {statusPedido: element.value, codigoPedido: $("#codigoPedido").val()},
 						success: data =>{
 
-							window.location.href=this.rotaPedido;
+							swal.fire({
+								title: "Pedido atualizado com sucesso",
+								icon: "success"
+							}).then(pedido => {
+								window.location.href=this.rotaPedido;
+							});
 
 						}
 
@@ -70,7 +76,7 @@ class ItensPedidoEscola{
 
 		[...formEl.elements].forEach((field, index) =>{
 
-			if (["quantidade", "produtos", "idUnidadeMedida", "categoria"].indexOf(field.name) > -1 && !field.value) {
+			if (["quantidade", "produtos"].indexOf(field.name) > -1 && !field.value) {
 
 				field.parentElement.classList.add('has-error');
 
@@ -118,19 +124,49 @@ class ItensPedidoEscola{
 
 	onChange(){
 
-		let categoria 	= this.formEl.querySelector("#categoria");
 		let produto 	= this.formEl.querySelector("#produtos");
+		let quantidade	= this.formEl.querySelector("#quantidade");
 		let avancar 	= document.querySelector("#btn-avancar");
 
-		categoria.addEventListener("change", event => {
-			$("#produtos").empty();
-			this.searchProdutosFornecedor(categoria.value);
+		if (this.formEl.id != "form-pedidos-edicao") {
+			let categoria 	= this.formEl.querySelector("#categoria");
+			categoria.addEventListener("change", event => {
+				$("#produtos").empty();
+				this.searchProdutosFornecedor(categoria.value);
 
-		});
+			});
+		}
 
 		produto.addEventListener("change", event => {
 
-			this.searchUnidadeMedidaProduto(produto.value);
+			// $("#idUnidadeMedida").val()
+			let dados = produto.value.split("/");
+			document.querySelector("#unidadeMedida").innerHTML = dados[2];
+			$("#saldo").val(dados[3]);
+
+			this.searchUnidadeMedidaProduto(dados[0])
+
+		});
+
+		quantidade.addEventListener("keyup", event => {
+
+			let saldo = this.formEl.querySelector("#saldo").value;
+			if (parseFloat(quantidade.value) > parseFloat(saldo)) {
+
+				quantidade.parentElement.classList.add('has-error');
+
+				this.formEl.querySelector("#addProduto").disabled = true;
+
+				console.log(saldo)
+
+			} else {
+
+				quantidade.parentElement.classList.remove('has-error');
+				quantidade.parentElement.classList.add('has-success');
+
+				this.formEl.querySelector("#addProduto").disabled = false;
+
+			}
 
 		});
 
@@ -166,7 +202,7 @@ class ItensPedidoEscola{
 
 				let produtos = $("#produtos");
 
-				produtos.append("<option value='' disabled selected></option>");
+				produtos.append("<option value='' selected></option>");
 
 				dados.forEach((field, index) => {
 					produtos.append(

@@ -67,6 +67,9 @@
                                     $this->load->view('template/menu2-view');
                                     break;
                                 
+                                case 3:
+                                    $this->load->view('template/menu3-view');
+                                    break;
                                 default:
                                     # code...
                                     break;

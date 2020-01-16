@@ -101,5 +101,5 @@
 
 	<script src="<?php echo base_url('assets/scripts/class/PesquisaEscola.js') ?>"></script>
 	<script>
-		window.app = new PesquisaEscola("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedidoEscola') ?>", 2, "<?php echo base_url('editar-pedido') ?>");
+		window.app = new PesquisaEscola("form-pesquisa-pedidos", "<?php echo base_url('pesquisa-pedidoEscola') ?>", 2, "<?php echo base_url('editarPedidoEscola') ?>");
 	</script>

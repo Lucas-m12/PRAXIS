@@ -158,11 +158,23 @@ class PedidoModel extends CI_Model{
 	}
 
 	public function listarStatusPedido($statusAtual = ''){
-
-		return $this->db->query("SELECT ID_STATUS, TIPO_STATUS, DESC_STATUS, COR FROM MM_STATUS_PEDIDO WHERE STATUS = ? AND ID_STATUS != ?", array(
-			1,
-			$statusAtual
-		))->result_array();
+		if ($statusAtual == 1) {
+			return $this->db->query("SELECT ID_STATUS, TIPO_STATUS, DESC_STATUS, COR FROM MM_STATUS_PEDIDO WHERE STATUS = ? AND ID_STATUS = ?", array(
+				1,
+				4
+			))->result_array();
+		} elseif ($statusAtual == 2) {
+			return $this->db->query("SELECT ID_STATUS, TIPO_STATUS, DESC_STATUS, COR FROM MM_STATUS_PEDIDO WHERE STATUS = ? AND ID_STATUS = ? OR ID_STATUS = ?", array(
+				1,
+				4,
+				3
+			))->result_array();
+		} elseif ($statusAtual == '') {
+			return $this->db->query("SELECT ID_STATUS, TIPO_STATUS, DESC_STATUS, COR FROM MM_STATUS_PEDIDO WHERE STATUS = ?", array(
+				1
+			))->result_array();
+		}
+		
 
 	}
 
@@ -268,7 +280,7 @@ class PedidoModel extends CI_Model{
 
 	public function buscarItensPedidoEscola($codigoPedido){
 
-		return $this->db->query("SELECT MIPC.ID_PRODUTO, MIPC.QUANTIDADE, MPC.ID_PROGRAMA, MPC.CODIGO_FORNECEDOR FROM MM_ITENS_PEDIDO_CENTRAL MIPC INNER JOIN MM_PEDIDOS_CENTRAL MPC USING(CODIGO_PEDIDO) WHERE MIPC.CODIGO_PEDIDO = ?", array(
+		return $this->db->query("SELECT MIPC.ID_PRODUTO, MIPC.QUANTIDADE, MPC.ID_PROGRAMA, MPC.CODIGO_FORNECEDOR, MPC.ID_ESCOLA FROM MM_ITENS_PEDIDO_CENTRAL MIPC INNER JOIN MM_PEDIDOS_CENTRAL MPC USING(CODIGO_PEDIDO) WHERE MIPC.CODIGO_PEDIDO = ?", array(
 			$codigoPedido
 		))->result_array();
 
@@ -301,9 +313,20 @@ class PedidoModel extends CI_Model{
 
 	}
 
-	private function entradaProdutosEstoqueEscola(){
+	public function dadosPedidosGestor(){
 
+		return $this->db->query("SELECT DATE_FORMAT(MPF.DATA_PEDIDO, '%d %m %Y') AS DATA_PEDIDO, MPF.CODIGO_PEDIDO, MF.NOME_FORNECEDOR, MSP.DESC_STATUS, MPF.STATUS FROM MM_PEDIDOS_FORNECEDOR MPF INNER JOIN MM_FORNECEDOR MF USING(CODIGO_FORNECEDOR) INNER JOIN MM_STATUS_PEDIDO MSP ON MPF.STATUS = MSP.ID_STATUS WHERE MPF.STATUS = ? OR MPF.STATUS = ?", array(
+			1,
+			2
+		))->result_array();
 
+	}
+
+	public function dadosPedidoAutorizacao($codigoPedido){
+
+		return $this->db->query("SELECT MPF.*, MF.NOME_FORNECEDOR, MIPF.*, MP.DESC_PRODUTO, MUM.DESC_UNIDADE_MEDIDA, MPG.DESC_PROGRAMA FROM MM_PEDIDOS_FORNECEDOR MPF INNER JOIN MM_FORNECEDOR MF USING(CODIGO_FORNECEDOR) INNER JOIN MM_ITENS_PEDIDO_FORNECEDOR MIPF USING(CODIGO_PEDIDO) INNER JOIN MM_PRODUTOS MP USING(ID_PRODUTO) INNER JOIN MM_UNIDADES_MEDIDA MUM USING(ID_UNIDADE_MEDIDA) INNER JOIN MM_PROGRAMAS MPG USING(ID_PROGRAMA) WHERE MPF.CODIGO_PEDIDO = ?", array(
+			$codigoPedido
+		))->result_array();
 
 	}
 
@@ -311,6 +334,50 @@ class PedidoModel extends CI_Model{
 
 		$this->entradaProdutosEstoqueEscola();
 		$this->atualizarEstoqueEscola();
+
+	}
+
+	private function entradaProdutosEstoqueEscola(){
+
+		$this->db->query("INSERT INTO MM_ENTRADA_PRODUTOS_ESCOLA(ID_ESCOLA, ID_PROGRAMA, ID_PRODUTO, QUANTIDADE) VALUES(?, ?, ?, ?)", array(
+			$this->getEscola(),
+			$this->getPrograma(),
+			$this->getProduto(),
+			$this->getQuantidade()
+		));
+
+	}
+
+	private function atualizarEstoqueEscola(){
+
+		$this->db->query("CALL atualizarEstoqueEscola(?, ?, ?, ?, ?)", array(
+			$this->getEscola(),
+			$this->getPrograma(),
+			$this->getProduto(),
+			$this->getQuantidade(),
+			date("Y/m/d")
+		));
+
+	}
+
+	public function saidaProdutoCentral(){
+
+		$this->db->query("INSERT INTO MM_SAIDA_PRODUTOS(ID_ESCOLA, ID_PROGRAMA, ID_PRODUTO, QUANTIDADE) VALUES(?, ?, ?, ?)", array(
+			$this->getEscola(),
+			$this->getPrograma(),
+			$this->getProduto(),
+			$this->getQuantidade()
+		));
+
+	}
+
+	public function diminuirEstoqueCentral(){
+
+		$this->db->query("UPDATE MM_ESTOQUE SET ESTOQUE_ATUAL = ESTOQUE_ATUAL - ? WHERE ID_PROGRAMA = ? AND ID_PRODUTO = ?", array(
+			$this->getQuantidade(),
+			$this->getPrograma(),
+			$this->getProduto()
+		));
 
 	}
 
@@ -326,7 +393,7 @@ class PedidoModel extends CI_Model{
 
 	public function listarPedidosEscola(){
 
-		return $this->db->query("SELECT MPC.CODIGO_PEDIDO, MPC.DATA_PEDIDO, UE.NOME_ESCOLA, MSP.TIPO_STATUS FROM MM_PEDIDOS_CENTRAL MPC INNER JOIN UNIDADE_ENSINO_00 UE USING(ID_ESCOLA) INNER JOIN MM_STATUS_PEDIDO MSP ON MPC.STATUS = MSP.ID_STATUS WHERE MPC.ID_ESCOLA LIKE ? AND MPC.STATUS LIKE ?", array(
+		return $this->db->query("SELECT MPC.CODIGO_PEDIDO, DATE_FORMAT(MPC.DATA_PEDIDO, '%d %m %Y') AS DATA_PEDIDO, UE.NOME_ESCOLA, MSP.TIPO_STATUS FROM MM_PEDIDOS_CENTRAL MPC INNER JOIN UNIDADE_ENSINO_00 UE USING(ID_ESCOLA) INNER JOIN MM_STATUS_PEDIDO MSP ON MPC.STATUS = MSP.ID_STATUS WHERE MPC.ID_ESCOLA LIKE ? AND MPC.STATUS LIKE ?", array(
 			"%".$this->getEscola()."%",
 			"%".$this->getStatus()."%"
 		))->result_array();
@@ -340,6 +407,24 @@ class PedidoModel extends CI_Model{
 		))->result_array();
 
 	}
+
+	public function informacoesPedidoEscola($codigoPedido){
+
+		return $this->db->query("SELECT MPC.*, MPG.DESC_PROGRAMA, UE.NOME_ESCOLA AS NOME_FORNECEDOR, MIPC.ID_PRODUTO, MP.DESC_PRODUTO, MIPC.QUANTIDADE, MUM.DESC_UNIDADE_MEDIDA, MUM.SIGLA_UNIDADE_MEDIDA, MSP.TIPO_STATUS, MSP.DESC_STATUS, MSP.ID_STATUS FROM MM_PEDIDOS_CENTRAL MPC INNER JOIN MM_PROGRAMAS MPG USING(ID_PROGRAMA) INNER JOIN UNIDADE_ENSINO_00 UE ON MPC.CODIGO_FORNECEDOR = UE.ID_ESCOLA INNER JOIN MM_ITENS_PEDIDO_CENTRAL MIPC USING(CODIGO_PEDIDO) INNER JOIN MM_PRODUTOS MP USING(ID_PRODUTO) INNER JOIN MM_UNIDADES_MEDIDA MUM USING(ID_UNIDADE_MEDIDA) INNER JOIN MM_STATUS_PEDIDO MSP ON MPC.STATUS = MSP.ID_STATUS WHERE MPC.CODIGO_PEDIDO = ?", array(
+			$codigoPedido
+		))->result_array();
+
+	}
+
+	public function autorizarPedidoEscola(){
+
+		$this->db->query("UPDATE MM_PEDIDOS_CENTRAL SET STATUS = ? WHERE CODIGO_PEDIDO = ?", array(
+			2,
+			$this->getCodigoPedido()
+		));
+
+	}
+
 
 
 

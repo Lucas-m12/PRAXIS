@@ -60,6 +60,10 @@ class Pesquisa{
 					this.searchDataLicitacoes(values);
 				break;
 
+				case 6:
+					this.searchDataReceitas(values);
+				break;
+
 			}
 
 		});
@@ -248,7 +252,7 @@ class Pesquisa{
 							<td>${field.NOME_ESCOLA}</td>
 							<td>${field.DATA_PEDIDO}</td>
 							<td>${field.TIPO_STATUS}</td>
-							<td><button class="btn btn-default btn-xs">Editar</button></td>
+							<td><a type="button" href="${this.rotaEdicao}/${field.CODIGO_PEDIDO}" class="btn btn-default btn-xs">Editar</a></td>
 						</tr>
 
 					`);
@@ -329,6 +333,52 @@ class Pesquisa{
 								<td>${field.DATA_INICIO}</td>
 								<td>${field.DATA_FIM}</td>
 								<td><a href="${this.rotaImpressao}/${field.ID_LICITACAO}/licitacao" class="btn btn-success btn-xs" target="new">Imprimir</a>       <a href="${this.rotaDestino}/${field.ID_LICITACAO}" class="btn btn-default btn-xs">Editar</a></td>
+
+							</tr>
+
+							`
+						);
+
+					});
+
+				}
+
+			}
+
+		});
+
+	}
+
+	searchDataReceitas(values){
+
+		let corpo = $("#corpoTabela");
+
+		$.ajax({
+
+			type: "POST",
+			url: this.rotaBusca,
+			data: values,
+			success: data =>{
+				let dados = JSON.parse(data);
+
+				if (dados == "" || dados == undefined || dados.length < 1) {
+					swal.fire({
+						title: "Falha!",
+						text: "Nenhuma receita encontrada",
+						icon: "warning"
+					});
+				}else{
+
+					dados.forEach(field =>{
+
+						corpo.append(
+							`
+							<tr>
+
+								<td>${field.ID_RECEITA}</td>
+								<td>${field.NOME_RECEITA}</td>
+								<td>${field.DS_NIVEL_ENSINO}</td>
+								<td><a href="${this.rotaEdicao}/${field.ID_RECEITA}" class="btn btn-default btn-xs">Editar</a></td>
 
 							</tr>
 

@@ -39,6 +39,9 @@
                 <a href="<?php echo base_url('fornecedores') ?>">Fornecedores</a>
             </li>
             <li>
+                <a href="<?php echo base_url('receitas') ?>">Receitas</a>
+            </li>
+            <li>
                 <a href="<?php echo base_url('perCapita') ?>">PerCapita</a>
             </li>
             
@@ -63,7 +66,15 @@
     </li>
 
     <li class="">
-        <a href="<?php echo base_url('estoque') ?>">Estoque</a>
+        <a href="#">Estoque<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+            <li>
+                <a href="<?php echo base_url('estoque') ?>">Central</a>
+            </li>
+            <li>
+                <a href="<?php echo base_url('estoqueEscola') ?>">Escola</a>
+            </li>
+        </ul>
     </li>
 
     <li>

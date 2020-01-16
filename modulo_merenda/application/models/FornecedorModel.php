@@ -282,6 +282,14 @@ class FornecedorModel extends CI_Model{
 
     }
 
+    public function listarProdutosEscola(){
+
+        return $this->db->query("SELECT MP.ID_PRODUTO, MP.DESC_PRODUTO, MUM.SIGLA_UNIDADE_MEDIDA, ME.ESTOQUE_ATUAL AS SALDO FROM MM_ESTOQUE ME INNER JOIN MM_PRODUTOS MP USING(ID_PRODUTO) INNER JOIN MM_UNIDADES_MEDIDA MUM USING(ID_UNIDADE_MEDIDA) WHERE ME.ESTOQUE_ATUAL != ?", array(
+            0
+        ))->result_array();
+
+    }
+
 }
 
 

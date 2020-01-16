@@ -7,8 +7,6 @@ class PedidoEscola{
 		this.rotaSave 	= rotaSave;
 		this.rotaDestino= rotaDestino;
 
-		this.save();
-
 	}
 
 
@@ -26,7 +24,6 @@ class PedidoEscola{
 
 	}
 
-	
 
 	getValues(formEl){
 
@@ -62,6 +59,7 @@ class PedidoEscola{
 			success: data =>{
 				let dados = JSON.parse(data);
 				this.avancar();
+
 			}
 
 		});

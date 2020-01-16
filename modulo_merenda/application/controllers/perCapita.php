@@ -9,6 +9,7 @@ class PerCapita extends CI_Controller{
 
 		$this->load->model("produtoModel", "produto");
 		$this->load->model("perCapitaModel", "perCapita");
+		$this->load->model("receitaModel", "receita");
 
 
 	}
@@ -117,14 +118,12 @@ class PerCapita extends CI_Controller{
 
 		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
 
-		$niveisEnsino			= $this->perCapita->listarNiveisEnsino();
-		$escolas 				= $this->perCapita->listarUnidadesEnsino();
-		$produtos				= $this->produto->produtos();
+		$escolas 			= $this->perCapita->listarUnidadesEnsino();
+		$receitas 			= $this->receita->listarReceitas();
 
-		$data['page']			= "relatorios/perCapita/relatorioPercapita-view";
-		$data['niveisEnsino']	= $niveisEnsino;
-		$data['escolas']		= $escolas;
-		$data['produtos']		= $produtos;
+		$data['page']		= "relatorios/perCapita/relatorioPercapita-view";
+		$data['escolas']	= $escolas;
+		$data['receitas']	= $receitas;
 
 		$this->load->view('template/main-view', $data);
 
@@ -134,15 +133,15 @@ class PerCapita extends CI_Controller{
 
 		$this->load->library('../controllers/Relatorio.php', "relatorio");
 
-		$nivelEnsino 	= $this->input->post("nivelEnsino");
+		$receita 		= $this->input->post("receita");
 		$unidadeEnsino  = $this->input->post("unidadeEnsino");
-		$produto  		= $this->input->post("produto");
 
 		$data['pdf']	= $this->relatorio;
 
-		$data['dados']	= $this->perCapita->dadosPerCapitaRelatorio($nivelEnsino, $unidadeEnsino, $produto);
+		$data['dados']	= $this->perCapita->dadosPerCapitaRelatorio($unidadeEnsino, $receita);
 		
-		$this->load->view('relatorios/perCapita/relatorioPercapita', $data);
+		echo json_encode($this->perCapita->dadosPerCapitaRelatorio($unidadeEnsino, $receita));
+		// $this->load->view('relatorios/perCapita/relatorioPercapita', $data);
 
 	}
 

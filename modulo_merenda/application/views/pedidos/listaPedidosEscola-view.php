@@ -10,7 +10,7 @@
 									
 									<div class="form-group col-lg-6">
 										<label class="control-label">Escola</label>
-										<select name="escolaPesquisa" id="escolaPesquisa" class="chosen-select">
+										<select name="escolaPesquisa" id="escolaPesquisa" class="form-control">
 											<option selected value="">SELECIONE A ESCOLA</option>
 											<?php foreach ($escolas as $value): ?>
 												<option value="<?php echo $value['ID_ESCOLA'] ?>"><?php echo $value['NOME_ESCOLA'] ?> / <?php echo $value['INEP_ESCOLA'] ?></option>
@@ -20,8 +20,8 @@
 
 									<div class="form-group col-lg-6">
 										<label class="control-label">Situação</label>
-										<select name="statusPedidoPesquisa" id="statusPedidoPesquisa" class="chosen-select">
-											<option disabled selected value="">SELECIONE A SITUAÇÃO</option>
+										<select name="statusPedidoPesquisa" id="statusPedidoPesquisa" class="form-control">
+											<option selected value="">SELECIONE A SITUAÇÃO</option>
 
 											<?php foreach ($status as $situacao): ?>
 												<option value="<?php echo $situacao['ID_STATUS'] ?>"><?php echo $situacao['TIPO_STATUS'] ?></option>
@@ -84,18 +84,6 @@
 
 	<script src="<?php echo base_url('assets/scripts/class/Pesquisa.js') ?>"></script>
 	<script>
-		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('lista-pedidoEscola') ?>", 4);
+		window.app = new Pesquisa("form-pesquisa-pedidos", "<?php echo base_url('lista-pedidoEscola') ?>", 4, "<?php echo base_url('editarPedido-escola') ?>");
 	</script>
-	<link href="<?php echo base_url('vendor/harvesthq/chosen/chosen.css') ?>" rel="stylesheet" >
-    <link href="<?php echo base_url('vendor/harvesthq/chosen/chosen.min.css') ?>" rel="stylesheet" >   
-    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.jquery.js'); ?>"></script>
-    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.jquery.min.js'); ?>"></script>
-    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.proto.js'); ?>"></script>
-    <script src="<?php echo base_url('vendor/harvesthq/chosen/chosen.proto.min.js'); ?>"></script>
-    <script>
-        $(".chosen-select").chosen({
-                placeholder_text_single : 'Selecione as categorias',
-                width: "95%",
-                no_results_text: "Nenhuma categoria encontrada"
-            }); 
-    </script>
+	

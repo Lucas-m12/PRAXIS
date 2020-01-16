@@ -14,6 +14,7 @@ class Estoque extends CI_Controller {
 		$this->load->model('programaModel', 'programa');
 		$this->load->model('categoriaModel', 'categoria');
 		$this->load->model('estoqueModel', 'estoque');
+		$this->load->model('produtoModel', 'produto');
 		$this->load->library('../controllers/Relatorio.php', "relatorio");
 
 
@@ -47,6 +48,51 @@ class Estoque extends CI_Controller {
        	$estoque = $this->estoque->pesquisarEstoque($programa, $produto);
 
        	echo json_encode($estoque);
+
+	}
+
+	public function pesquisarEstoqueEscola(){
+
+		$produto 	= $this->input->post('produtos');
+       	$programa 	= $this->input->post('programa');
+       	$escola 	= $this->input->post("escola");
+
+       	$estoque 	= $this->estoque->pesquisarEstoqueEscola($programa, $produto, $escola);
+
+       	echo json_encode($estoque);
+
+	}
+
+	public function estoqueEscolaCentralView(){
+
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$programas 			= $this->programa->listarProgramas();
+		$produtos 			= $this->produto->produtos();
+		$escolas 			= $this->estoque->listarEscolas();
+		
+		$data['produtos']	= $produtos;
+		$data['programas']	= $programas;
+		$data['escolas']	= $escolas;
+		$data['page'] 	= 'estoque/estoqueEscolaCentral-view';
+
+		$this->load->view('template/main-view', $data);
+
+	}
+
+	public function estoqueEscolaView($idEscola){
+
+		if($this->session->userdata('logado')){}else {redirect(base_url('login'));}
+
+		$programas 			= $this->programa->listarProgramas();
+		$produtos 			= $this->produto->produtos();
+
+		$data['page']		= 'estoque/estoqueEscola-view';
+		$data['produtos']	= $produtos;
+		$data['programas']	= $programas;
+		$data['escola']		= $idEscola;
+
+		$this->load->view('template/main-view', $data);
 
 	}
 
