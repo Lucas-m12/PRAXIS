@@ -87,20 +87,37 @@ class Estoque{
 					tabela.empty();
 
 					dados.forEach(info =>{
+						if (!info.NOME_ESCOLA) {
+							tabela.append(
 
-						tabela.append(
+								`<tr>
 
-							`<tr>
+									<td>${info.DESC_PROGRAMA} - ${info.PROGRAMA}</td>
+									<td>${info.DESC_PRODUTO}</td>
+									<td>${info.ESTOQUE_ATUAL} ${info.SIGLA_UNIDADE_MEDIDA}</td>
 
-								<td>${info.DESC_PROGRAMA}</td>
-								<td>${info.DESC_PRODUTO}</td>
-								<td>${info.ESTOQUE_ATUAL} ${info.SIGLA_UNIDADE_MEDIDA}</td>
+								</tr>`
 
-							</tr>`
+							);
+						} else {
 
-						);
+							tabela.append(
+
+								`<tr>
+									<td>${info.NOME_ESCOLA}</td>
+									<td>${info.DESC_PROGRAMA} - ${info.PROGRAMA}</td>
+									<td>${info.DESC_PRODUTO}</td>
+									<td>${info.ESTOQUE_ATUAL} ${info.SIGLA_UNIDADE_MEDIDA}</td>
+
+								</tr>`
+
+							);
+
+						}
+						
 
 					});
+
 
 				}
 

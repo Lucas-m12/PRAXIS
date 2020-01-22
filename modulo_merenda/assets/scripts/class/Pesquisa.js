@@ -218,7 +218,7 @@ class Pesquisa{
 						 		<td>${field.DATA_PEDIDO}</td>
 						 		<td>${field.NOME_FORNECEDOR}</td>
 						 		<td><button class="btn btn-xs btn-outline" type="button" name="btn-status" style="color: ${field.COR};">${field.TIPO_STATUS}</button></td>
-						 		<td><a href="${this.rotaImpressao}/${field.CODIGO_PEDIDO}/pedido" type="button" class="btn btn-success btn-xs" target="new">Imprimir</a>         ${editar}</td>
+						 		<td><a href="${this.rotaImpressao}/${field.CODIGO_PEDIDO}/pedido" type="button" class="btn btn-warnig btn-xs" target="new">Imprimir</a>         ${editar}</td>
 						 	`
 						 document.getElementById('corpoTabela').appendChild(tr);
 
@@ -332,7 +332,7 @@ class Pesquisa{
 								<td>${field.NOME_FORNECEDOR}</td>
 								<td>${field.DATA_INICIO}</td>
 								<td>${field.DATA_FIM}</td>
-								<td><a href="${this.rotaImpressao}/${field.ID_LICITACAO}/licitacao" class="btn btn-success btn-xs" target="new">Imprimir</a>       <a href="${this.rotaDestino}/${field.ID_LICITACAO}" class="btn btn-default btn-xs">Editar</a></td>
+								<td><a href="${this.rotaImpressao}/${field.ID_LICITACAO}/licitacao" class="btn btn-warning btn-xs" target="new">Imprimir</a>       <a href="${this.rotaDestino}/${field.ID_LICITACAO}" class="btn btn-default btn-xs">Editar</a></td>
 
 							</tr>
 

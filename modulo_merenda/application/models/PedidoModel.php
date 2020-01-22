@@ -362,19 +362,21 @@ class PedidoModel extends CI_Model{
 
 	public function saidaProdutoCentral(){
 
-		$this->db->query("INSERT INTO MM_SAIDA_PRODUTOS(ID_ESCOLA, ID_PROGRAMA, ID_PRODUTO, QUANTIDADE) VALUES(?, ?, ?, ?)", array(
+		$this->db->query("INSERT INTO MM_SAIDA_PRODUTOS(ID_ESCOLA, ID_PROGRAMA, ID_PRODUTO, QUANTIDADE, DATA_SAIDA) VALUES(?, ?, ?, ?, ?)", array(
 			$this->getEscola(),
 			$this->getPrograma(),
 			$this->getProduto(),
-			$this->getQuantidade()
+			$this->getQuantidade(),
+			date("Y/m/d")
 		));
 
 	}
 
 	public function diminuirEstoqueCentral(){
 
-		$this->db->query("UPDATE MM_ESTOQUE SET ESTOQUE_ATUAL = ESTOQUE_ATUAL - ? WHERE ID_PROGRAMA = ? AND ID_PRODUTO = ?", array(
+		return $this->db->query("UPDATE MM_ESTOQUE SET ESTOQUE_ATUAL = ESTOQUE_ATUAL - ?, DATA_ATUALIZACAO = ? WHERE ID_PROGRAMA = ? AND ID_PRODUTO = ?", array(
 			$this->getQuantidade(),
+			date("Y/m/d"),
 			$this->getPrograma(),
 			$this->getProduto()
 		));

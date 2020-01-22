@@ -128,23 +128,24 @@ class ItensPedidoEscola{
 		let quantidade	= this.formEl.querySelector("#quantidade");
 		let avancar 	= document.querySelector("#btn-avancar");
 
-		if (this.formEl.id != "form-pedidos-edicao") {
-			let categoria 	= this.formEl.querySelector("#categoria");
-			categoria.addEventListener("change", event => {
-				$("#produtos").empty();
-				this.searchProdutosFornecedor(categoria.value);
+		// if (this.formEl.id != "form-pedidos-edicao") {
+		// 	let categoria 	= this.formEl.querySelector("#categoria");
+		// 	categoria.addEventListener("change", event => {
+		// 		$("#produtos").empty();
+		// 		this.searchProdutosFornecedor(categoria.value);
 
-			});
-		}
+		// 	});
+		// }
 
 		produto.addEventListener("change", event => {
 
-			// $("#idUnidadeMedida").val()
+			$("#quantidade").empty();
+			$("#saldo").empty();
 			let dados = produto.value.split("/");
 			document.querySelector("#unidadeMedida").innerHTML = dados[2];
 			$("#saldo").val(dados[3]);
 
-			this.searchUnidadeMedidaProduto(dados[0])
+			// this.searchUnidadeMedidaProduto(dados[0])
 
 		});
 
@@ -172,53 +173,53 @@ class ItensPedidoEscola{
 
 	}
 
-	searchUnidadeMedidaProduto(idProduto){
+	// searchUnidadeMedidaProduto(idProduto){
 
-		$.ajax({
+	// 	$.ajax({
 
-			type: "POST",
-			url: this.rotaPesquisaUnidadeMedida,
-			data: {idProduto, type: 3},
-			success: data =>{
-				let dados = JSON.parse(data);
-				$("#idUnidadeMedida").val(dados.ID_UNIDADE_MEDIDA);
-				document.querySelector("#unidadeMedida").innerHTML = dados.SIGLA_UNIDADE_MEDIDA;
-			}
+	// 		type: "POST",
+	// 		url: this.rotaPesquisaUnidadeMedida,
+	// 		data: {idProduto, type: 3},
+	// 		success: data =>{
+	// 			let dados = JSON.parse(data);
+	// 			$("#idUnidadeMedida").val(dados.ID_UNIDADE_MEDIDA);
+	// 			document.querySelector("#unidadeMedida").innerHTML = dados.SIGLA_UNIDADE_MEDIDA;
+	// 		}
 
-		});
+	// 	});
 
-	}
+	// }
 
 		
-	searchProdutosFornecedor(idCategoria){
+	// searchProdutosFornecedor(idCategoria){
 
-		$.ajax({
+	// 	$.ajax({
 
-			type: "POST",
-			url: this.rotaPesquisaProduto,
-			data: {idCategoria, type: 2},
-			success: data =>{
-				let dados = JSON.parse(data);
+	// 		type: "POST",
+	// 		url: this.rotaPesquisaProduto,
+	// 		data: {idCategoria, type: 2},
+	// 		success: data =>{
+	// 			let dados = JSON.parse(data);
 
-				let produtos = $("#produtos");
+	// 			let produtos = $("#produtos");
 
-				produtos.append("<option value='' selected></option>");
+	// 			produtos.append("<option value='' selected></option>");
 
-				dados.forEach((field, index) => {
-					produtos.append(
-						`
-						<option value="${field.ID_PRODUTO}/${field.DESC_PRODUTO}">${field.DESC_PRODUTO}</option>
+	// 			dados.forEach((field, index) => {
+	// 				produtos.append(
+	// 					`
+	// 					<option value="${field.ID_PRODUTO}/${field.DESC_PRODUTO}/${field.SALDO}">${field.DESC_PRODUTO}</option>
 
-						`
-					);
+	// 					`
+	// 				);
 
-				});
+	// 			});
 
-			}
+	// 		}
 
-		});
+	// 	});
 
-	}
+	// }
 
 	sendDataProduct(values){
 

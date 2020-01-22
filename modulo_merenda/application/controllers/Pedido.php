@@ -494,11 +494,12 @@ class Pedido extends CI_Controller{
 
 		$dadosPedido	 	= $this->pedido->dadosPedidoEscola($codigoPedido);
 		$categorias			= $this->categoria->categorias();
+		$produtos 			= $this->fornecedor->listarProdutosEscola($dadosPedido['ID_PROGRAMA']);
 
 		$data['page'] 		= "pedidos/novoPedidoProdutoEscola-view";
 		$data['codigo'] 	= $codigoPedido;
 		$data['pedido']		= $dadosPedido;
-		$data['categorias']	= $categorias;
+		$data['produtos']	= $produtos;
 
 		$this->load->view('template/main-view', $data);
 
@@ -594,7 +595,7 @@ class Pedido extends CI_Controller{
 
 		$info 				= $this->pedido->informacoesPedidoEscola($codigoPedido);
 		$status 			= $this->pedido->listarStatusPedido($info[0]['STATUS']);
-		$produtos 			= $this->fornecedor->listarProdutosEscola();
+		$produtos 			= $this->fornecedor->listarProdutosEscola($info[0]['ID_PROGRAMA']);
 
 		$data['page']		= 'pedidos/edicaoPedidoEscola-view';
 		$data['info']		= $info;

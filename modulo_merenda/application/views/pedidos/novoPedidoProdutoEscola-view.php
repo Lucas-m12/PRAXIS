@@ -25,20 +25,12 @@
 									</div>
 
 									<div class="form-group col-lg-6">
-										<label class="control-label">Selecione a categoria do produto</label>
-										<select class="form-control" name="categoria" id="categoria">
-											<option disabled selected></option>
-											<?php foreach ($categorias as $value): ?>
-												<option value="<?php echo $value['ID_CATEGORIA'] ?>"><?php echo $value['DESC_CATEGORIA'] ?></option>
-											<?php endforeach ?>
-										</select>
-									</div>
-
-									<div class="form-group col-lg-6">
 										<label class="control-label">Selecione os produtos do pedido</label>
 										<select class="form-control" name="produtos" id="produtos">
-											<option disabled selected></option>
-											
+											<option selected></option>
+											<?php foreach ($produtos as $value): ?>
+												<option value="<?php echo $value['ID_PRODUTO'] . "/" . $value['DESC_PRODUTO'] . "/" . $value['SIGLA_UNIDADE_MEDIDA'] . "/" . $value['SALDO'] ?>"><?php echo $value['DESC_PRODUTO'] ?></option>
+											<?php endforeach ?>
 										</select>
 									</div>
 
@@ -49,6 +41,7 @@
 											<span class="input-group-addon" id="unidadeMedida"></span>
 										</div>
 										<input type="hidden" name="idUnidadeMedida" id="idUnidadeMedida">
+										<input type="hidden" name="saldo" id="saldo" value="">
 									</div>
 
 									<div class="form-group col-lg-12">

@@ -52,7 +52,8 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
-                                    <tr>                    
+                                    <tr>
+                                        <th>ESCOLA</th>                 
                                         <th>PROGRAMA</th>            
                                         <th>PRODUTO</th>
                                         <th>ESTOQUE ATUAL</th>

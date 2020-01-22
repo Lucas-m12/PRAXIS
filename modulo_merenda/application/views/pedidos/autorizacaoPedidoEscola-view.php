@@ -87,7 +87,7 @@
         				icon: "warning",
 					  	confirmButtonText: 'Autorizar Pedido',
         			}).then((result) => {
-        				formEl.submit();
+        				if (result) formEl.submit();
         			});
 
         		});

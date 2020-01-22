@@ -59,11 +59,11 @@
                         <!-- menu -->
                         <?php 
                             switch ($this->session->userdata('ID_NIVEL_ACESSO')) {
-                                case 1:
+                                case 2:
                                     $this->load->view('template/menu1-view');
                                     break;
 
-                                case 2:
+                                case 1:
                                     $this->load->view('template/menu2-view');
                                     break;
                                 

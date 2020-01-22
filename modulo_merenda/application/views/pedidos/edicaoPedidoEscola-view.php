@@ -162,6 +162,35 @@
 			</div>
 		</div>
 
+		<div class="row" id="tabela" style="display: block;">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>                    
+                                        <th>CÓDIGO DO PRODUTO</th>            
+                                        <th>PRODUTO</th>
+                                        <th>QUANTIDADE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="corpoTabela">
+                                	<?php foreach ($info as $value): ?>
+                                		<tr id="tr">
+                                			<td><?php echo $value['ID_PRODUTO'] ?></td>
+                                			<td><?php echo $value['DESC_PRODUTO'] ?></td>
+                                			<td><?php echo $value['QUANTIDADE'] ?></td>
+                                		</tr>
+                                	<?php endforeach ?>
+                                </tbody>
+                            </table>
+                        </div>                                                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <div align="center">
